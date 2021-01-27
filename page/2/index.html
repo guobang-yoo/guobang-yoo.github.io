@@ -1,0 +1,456 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Braindance - 兴趣使然</title><meta name="keywords" content="blog,学习,博客"><meta name="author" content="Braindance"><meta name="copyright" content="Braindance"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="这不是个博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Braindance">
+<meta property="og:url" content="https://braindance.tk/page/2/index.html">
+<meta property="og:site_name" content="Braindance">
+<meta property="og:description" content="这不是个博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/qiyu.jpg">
+<meta property="article:author" content="Braindance">
+<meta property="article:tag" content="blog">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/qiyu.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/favicon.png"><link rel="canonical" href="https://braindance.tk/page/2/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/guobang-yoo/CDN@master/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?283f1b95677b0d1b02cde7fa66532e1f";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.0.2',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"这篇文章距离当时已经","messageNext":"天了，你懂我意思吧。"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isSidebar: false,
+  postUpdate: '2021-01-21 11:30:30'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {
+  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }
+})()</script><meta name="referrer" content="no-referrer-when-downgrade" /><style type="text/css">#toggle-sidebar {bottom: 80px}</style><!-- 音频播放 --><link rel="stylesheet" href="/dist/APlayer.min.css"><div id="aplayer"></div><script type="text/javascript" src="/dist/APlayer.min.js"></script><script type="text/javascript" src="/dist/music.js"></script><meta name="generator" content="Hexo 5.0.2"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/qiyu.jpg" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">24</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">31</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">5</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-igloo"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-box"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tag"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-book"></i><span> 目录</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-dragon"></i><span> 传送门</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/shuoshuo/"><i class="fa-fw fas fa-star-half"></i><span> 说说</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/guestbook/"><i class="fa-fw fas fa-comment-dots"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-glass-cheers"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-ghost"></i><span> 关于</span></a></div></div></div></div><div id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/top_img/83531406_p0.png)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Braindance</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-igloo"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-box"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tag"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-book"></i><span> 目录</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-dragon"></i><span> 传送门</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/shuoshuo/"><i class="fa-fw fas fa-star-half"></i><span> 说说</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/guestbook/"><i class="fa-fw fas fa-comment-dots"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-glass-cheers"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-ghost"></i><span> 关于</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="site-info"><h1 id="site-title">Braindance</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/guobang-yoo" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=aFpaXVhRWl5ZUFgoGRlGCwcF" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2250926180&amp;site=qq&amp;menu=yes" target="_blank" title=""><i class="fab fa-qq"></i></a><a class="social-icon" href="https://space.bilibili.com/15218027" target="_blank" title="Bilibili"><i class="fab fa-accessible-icon"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/Upload-Labs3/" title="Upload-Labs(三)">     <img class="post_bg" src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201116160237.png" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/404.jpg'" alt="Upload-Labs(三)"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/Upload-Labs3/" title="Upload-Labs(三)">Upload-Labs(三)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-11-16T08:04:30.000Z" title="发表于 2020-11-16 16:04:30">2020-11-16</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/DROPS/">DROPS</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/">文件上传漏洞</a></span></div><div class="content">前言​    继续接着上一次的Upload-labs往下写。这记下第11-15题，目前进度是20题都已经完成正在抽时间写博客，然后16题是我卡的最久的关，不过也学到了感觉很牛的姿势，所以到时候专门开一篇只讲16。
+​    在线靶机地址：
+
+linux环境
+windows环境
+
+Pass-11​    (这题使用了windows环境)
+​    源码：
+123456789101112131415161718$is_upload = false;$msg = null;if(isset($_POST[&#x27;submit&#x27;]))&#123;    $ext_arr = array(&#x27;jpg&#x27;,&#x27;png&#x27;,&#x27;gif&#x27;);    $file_ext = substr($_FILES[&#x27;upload_file&#x27;][&#x27;name&#x27;],strrpos($_FILES[&#x27;upload_file&#x27;][&#x27;name&#x27;],&quot;.&quot;)+1); ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/jsDelivr%E5%8A%A0%E9%80%9F%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/" title="jsDelivr加速静态博客">     <img class="post_bg" src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201111213620.jpg" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/404.jpg'" alt="jsDelivr加速静态博客"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/jsDelivr%E5%8A%A0%E9%80%9F%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/" title="jsDelivr加速静态博客">jsDelivr加速静态博客</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-11-11T13:37:53.000Z" title="发表于 2020-11-11 21:37:53">2020-11-11</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E6%8D%A3%E8%85%BE%E5%8D%9A%E5%AE%A2/">捣腾博客</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/jsdelivr/">jsdelivr</a></span></div><div class="content">前言​    这几天总感觉博客访问特别慢，最先是找到了CDN加速，但是在国内加速的话域名都是要备案的，又看了看境外加速。
+
+ CDN的全称是Content Delivery Network，即内容分发网络。CDN是构建在网络之上的内容分发网络，依靠部署在各地的边缘服务器，通过中心平台的负载均衡、内容分发、调度等功能模块，使用户就近获取所需内容，降低网络拥塞，提高用户访问响应速度和命中率。CDN的关键技术主要有内容存储和分发技术。——百度百科
+
+在犹豫要不要买的时候，发现了这个东西：jsdelivr，一个可以加速静态资源的免费CDN，官网上能看的出和WordPress有什么py关系还可以加速github的资源。hexo是静态博客，那么我就把博客要用到的js、css、还有博客用到的一些图片都放github然后引用。开搞
+1. 新建仓库
+​    名字重了是因为我已经创建好了并且使用了以后才来写的博客。
+2. 克隆Git仓库到本地​    在自己电脑建个文件夹然后打开git输入git clone 你仓库的链接，把刚刚创建的仓库拉倒本地方便上传到仓库。
+
+廖雪峰老师的git教程我当时看了一遍， ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/Upload-Labs2/" title="Upload-Labs(二)">     <img class="post_bg" src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201111104025.jpg" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/404.jpg'" alt="Upload-Labs(二)"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/Upload-Labs2/" title="Upload-Labs(二)">Upload-Labs(二)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-11-09T12:12:27.958Z" title="发表于 2020-11-09 20:12:27">2020-11-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/DROPS/">DROPS</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/">文件上传漏洞</a></span></div><div class="content">前言​    这次彻底的从头到尾分析了一下源码的执行过程，大致的写一下，以防以后再看的时候不知道题目是什么情况。
+123456789101112131415161718192021222324252627282930$is_upload &#x3D; false;$msg &#x3D; null;if (isset($_POST[&#39;submit&#39;])) &#123;    if (file_exists(UPLOAD_PATH)) &#123;    &#x2F;&#x2F;这里下面是过滤        $deny_ext &#x3D; array(&quot;.php&quot;,&quot;.php5&quot;,&quot;.php4&quot;,&quot;.html&quot;, ......);        $file_name &#x3D; trim($_FILES[&#39;upload_file&#39;][&#39;name&#39;]);        $file_name &#x3D; deldot($file_name);&#x2F;&#x2 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/Upload-Labs1/" title="Upload-Labs(一)">     <img class="post_bg" src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201111104319.png" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/404.jpg'" alt="Upload-Labs(一)"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/Upload-Labs1/" title="Upload-Labs(一)">Upload-Labs(一)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-11-08T11:23:16.805Z" title="发表于 2020-11-08 19:23:16">2020-11-08</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/DROPS/">DROPS</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/">文件上传漏洞</a></span></div><div class="content">介绍
+大部分的网站和应用系统都有上传功能，而程序员在开发任意文件上传功能时，并未考虑文件格式后缀的合法性校验或者是否只在前端通过js进行后缀检验。这时攻击者可以上传一个与网站脚本语言相对应的恶意代码动态脚本，例如(jsp、asp、php、aspx文件后缀)到服务器上，从而访问这些恶意脚本中包含的恶意代码，进行动态解析最终达到执行恶意代码的效果，进一步影响服务器安全。
+
+在线靶机地址：
+
+linux环境
+windows环境
+
+Pass-01​    尝试上传php木马，发现提示上传错误
+
+​    提示只能上传jpg、png、gif类型的图片。查看源码发现是一个前端的后缀过滤，那么我们尝试绕过前端的JS代码。
+​    源码：
+1234567891011121314151617function checkFile() &#123;    var file = document.getElementsByName(&#x27;upload_file&#x27;)[0].value;    if (file == null || file == &quot;&quot;) &#123;    ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/Hackgame20202/" title="Hackgame2020(二)">     <img class="post_bg" src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201111123547.png" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/404.jpg'" alt="Hackgame2020(二)"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/Hackgame20202/" title="Hackgame2020(二)">Hackgame2020(二)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-11-05T01:29:22.000Z" title="发表于 2020-11-05 09:29:22">2020-11-05</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/CTF/">CTF</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/Hackergame-2020/">Hackergame 2020</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/Java/">Java</a></span></div><div class="content">一闪而过的Flag​    根据题目信息程序每次运行时隐约可见黑色控制台上有 flag 一闪而过，我想到了应该能看程序的代码啥的找到，但是天下武功，唯快不破，下载 运行 截图一气呵成。
+​    
+​    接下来让我康康哪一位是瞎子，包括答案里也是满满的嘲讽。
+参考答案：flag{Are_you_eyes1ght_g00D?_can_you_dIst1nguish_1iI?}
+从零开始的记账工具人​    npy给了我一张账单，让我计算账单上面的金额，flag就是由金额组成的。本以为是一个简单的Excel的表格函数解决，打开我傻了。
+
+​    原来是搞这个大小写金额的转换，没见过Excel有这种操作就去百度，转了一大圈，网上只有数字转大写金额的，没有反过来的。还去了github上找代码，发现运行的结果和自己想要的还是有些出入。卡了有足足半天，之后自己写了一个Java代码跑了一遍，代码如下：
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748import jav ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/XSS-Lab1/" title="XSS-Lab (一)">     <img class="post_bg" src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201111120856.jpg" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/404.jpg'" alt="XSS-Lab (一)"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/XSS-Lab1/" title="XSS-Lab (一)">XSS-Lab (一)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-11-03T02:13:39.522Z" title="发表于 2020-11-03 10:13:39">2020-11-03</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/DROPS/">DROPS</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/XSS/">XSS</a></span></div><div class="content">头靶机地址：https://buuoj.cn/challenges#XSS-Lab
+
+level 1​    
+​    观察发现欢迎用户test与URL中的name=test字段对应，尝试修改发现可行。直接将name字段改为name=&lt;script&gt;alert()&lt;/script&gt;，完工。
+level 2
+​    在搜索栏中的输入会回显到页面，查看网页源代码，发现值在input的value属性中
+
+​    构造闭合&quot;&gt; &lt;script&gt;alert()&lt;/script&gt; // ，构造以后的标签会变成.... value=&quot;&quot;&gt; &lt;script&gt;alert()&lt;/script&gt; // &quot;&gt;。完工
+level 3
+​    老样子构造value属性闭合，尝试&quot;&gt; &lt;script&gt;alert()&lt;/script&gt; // 构造闭合，查看网页源代码发现语句变成&amp;quot;&amp;gt; &amp;lt;script ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/Hackgame20201/" title="Hackgame2020(一)">     <img class="post_bg" src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201111120831.png" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/404.jpg'" alt="Hackgame2020(一)"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/Hackgame20201/" title="Hackgame2020(一)">Hackgame2020(一)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-11-01T10:33:40.000Z" title="发表于 2020-11-01 18:33:40">2020-11-01</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/CTF/">CTF</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/Web/">Web</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/Hackergame-2020/">Hackergame 2020</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">代码审计</a></span></div><div class="content">前言比赛地址：https://hack.lug.ustc.edu.cn/
+web签到题​    第一题是flag提取器，打开题目以后页面是一个提取器下面一个进度条和一个提取按钮。
+
+​    随便拉了拉进度条发现初始是0末尾是1.5，然后中间的数值都是小数
+
+​    我猜的题目可能是想让数值为1时能提取到flag。
+​    F12查看源代码，定位到进度条的标签，查看属性
+
+​    确实和猜测一样最大最小值分别是0、1.5，注意到step值为0.00001，就是这个属性让我们拖动进度条时，递增的值是小数，想精准得到1个flag，就把网页上的step值改为1。然后随便拖动一下进度条得到1，点击提取按钮，完工。
+
+2048​    打开题目是一个2048的小游戏，第一个想法就是玩2048达到一定分数以后会获得flag（可恶这个比赛怎么知道最近我天天在玩2048的）,但是想比赛不可能让选手在线玩游戏吧，尤其对于我这种逃课废物是不可能努力哒！
+F12开始翻网页资源
+
+​    还好上次摸鱼课题做了一个网页版的2048，略微能看懂一点点结构，第一个animframe_polyfill应该就是 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/sql-labs1/" title="sql-labs(一)">     <img class="post_bg" src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201111120858.png" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/404.jpg'" alt="sql-labs(一)"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/sql-labs1/" title="sql-labs(一)">sql-labs(一)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-22T02:50:08.934Z" title="发表于 2020-09-22 10:50:08">2020-09-22</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/DROPS/">DROPS</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/sql%E6%B3%A8%E5%85%A5/">sql注入</a></span></div><div class="content">前言在线靶机地址：https://buuoj.cn/challenges#sqli-labs
+less-1​    首先说明sql注入的大致步骤：
+
+判断注入类型。如整型字符型注入等。
+判断列数
+判断数据的回显位
+构造sql语句
+
+​    根据题目提示，说明是一个单引号注入题目，构造一个带单引号的语句?id=1&#39;，发现数据库报错
+
+​    通过后面的报错语句1&#39;&#39; LIMIT 0,1的分析，我们的单引号被数据库解析，那么说明我们也可以使用连接查询union插入我们想要查询的语句。
+​    推出数据库的查询的部分语句可能为where id = &#39;$id&#39;LIMIT 0,1，那么通过构造闭合?id=1&#39; [这里添加语句] --+添加自己想要语句，语句后面的--+作用是将后面的其他语句注释掉。
+​    首先是判断字段个数：?id=1&#39; order by 1 --+，页面显示正常，直到尝试?id=1&#39; order by 4 --+发现数据库报错
+
+​    说明数据库的字段值只有四个。
+​    接下来测试数据的回显位，构 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/Chevereto-%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%BA%8A/" title="Chevereto-搭建一个自己的图床">     <img class="post_bg" src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201111120851.jpg" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/404.jpg'" alt="Chevereto-搭建一个自己的图床"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/Chevereto-%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%BA%8A/" title="Chevereto-搭建一个自己的图床">Chevereto-搭建一个自己的图床</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-20T03:09:02.000Z" title="发表于 2020-09-20 11:09:02">2020-09-20</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/%E5%9B%BE%E5%BA%8A/">图床</a><span class="article-meta__link">•</span><a class="article-meta__tags" href="/tags/%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF/">宝塔面板</a></span></div><div class="content">​    博客搭完了，自己选择的这个博客主题又是以图片为主要元素的，当然要考虑图片的使用问题了，原来打算直接放在服务器上，但是后来想了想，以后如果文章越写越多用的图太多服务器的流量也不够用，想到了图床这一托管图片的服务，但是放在别人的上面总怕会受到限制，正好发现了Chevereto这一图床系统，可以自己搭建一个图床服务器，正好自己还有一个阿里云学生云，那就开工。
+Chevereto 说明
+Chevereto是一个可以帮助你建立自己的图像分享网站（图床）的应用程序，我们的目标是可以让世界上的任何一个人都可以建立自己的图像共享平台。我们坚定不移的为那些想要可定制的白标图像共享服务的人建立一个真正的替代品。
+
+Chevereto分为免费版和付费版，区别肯定就是大小什么的，我这个搭在学生云上肯定就不用想我会选择哪个了吧🤣
+环境说明因为Chevereto所需要的环境为
+
+Apache/Nginx
+
+PHP 5.5+
+
+MySQL 5.0+
+
+
+我太懒了不想动所以我选择使用宝塔面板为我们搭建web环境。
+宝塔面板官网：https://www.bt.cn/
+安装完成以后进入管理面板应该会直接提示你 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/Let's%20Encrypt%20%E5%85%8D%E8%B4%B9Https%E8%AF%81%E4%B9%A6/" title="Let's Encrypt 免费Https证书">     <img class="post_bg" src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201111120852.jpg" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/404.jpg'" alt="Let's Encrypt 免费Https证书"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/Let's%20Encrypt%20%E5%85%8D%E8%B4%B9Https%E8%AF%81%E4%B9%A6/" title="Let's Encrypt 免费Https证书">Let's Encrypt 免费Https证书</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-03T07:30:37.000Z" title="发表于 2020-09-03 15:30:37">2020-09-03</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fas fa-tag article-meta__icon"></i><a class="article-meta__tags" href="/tags/Https%E8%AF%81%E4%B9%A6/">Https证书</a></span></div><div class="content">参考文章:Let’s Encrypt，免费好用的 HTTPS 证书
+先放官网Let’s Encrypt
+
+Let’s Encrypt 是免费、自动化、开放的证书签发服务, 它得到了 Mozilla、Cisco、Akamai、Electronic Frontier Foundation 和 Chrome 等众多公司和机构的支持，发展十分迅猛
+
+
+所需环境
+一个 HTTP 服务，以 Nginx 为例
+
+python
+
+两个目录:
+
+/site    网站目录
+/site_site_cert    保存证书的目录
+
+
+
+证书的颁发有两种方式：
+通过在线生成通过网址在线生成，需要验证文件
+通过程序生成通过本地 IIS，生成后会自动绑定本地 IIS 站点上的HTTPS 域名。
+我使用的是第一种方法：在线生成，原理是：先在你的服务器上传一个密钥，然后Let’s Encrypt会对网站进行访问，下载密钥进行验证。
+
+开工创建账号首先创建一个目录，我是在根目录下创建文件夹site_cert
+1mkdir /site_cert
+
+这个文件夹用来存放各种临时文件和最后的证书文件。进入这个目录，创建一个RS ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/qiyu.jpg" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/friend_404.gif'" alt="avatar"/><div class="author-info__name">Braindance</div><div class="author-info__description">兴趣使然</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length_num">24</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length_num">31</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length_num">5</div></a></div></div><a class="button--animated" id="card-info-btn" href="https://github.com/guobang-yoo"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/guobang-yoo" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=aFpaXVhRWl5ZUFgoGRlGCwcF" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2250926180&amp;site=qq&amp;menu=yes" target="_blank" title=""><i class="fab fa-qq"></i></a><a class="social-icon" href="https://space.bilibili.com/15218027" target="_blank" title="Bilibili"><i class="fab fa-accessible-icon"></i></a></div></div></div><div class="sticky_layout"><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content"></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/BUUCTF%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98-Web/" title="BUUCTF寒假刷题-Web"><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201120223242.jpg" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/404.jpg'" alt="BUUCTF寒假刷题-Web"/></a><div class="content"><a class="title" href="/2021/BUUCTF%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98-Web/" title="BUUCTF寒假刷题-Web">BUUCTF寒假刷题-Web</a><time datetime="2021-01-18T08:58:56.273Z" title="发表于 2021-01-18 16:58:56">2021-01-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/%5B%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98%202019%5DRCE%20ME/" title="【极客大挑战 2019】RCE ME"><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201120232544.png" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/404.jpg'" alt="【极客大挑战 2019】RCE ME"/></a><div class="content"><a class="title" href="/2020/%5B%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98%202019%5DRCE%20ME/" title="【极客大挑战 2019】RCE ME">【极客大挑战 2019】RCE ME</a><time datetime="2020-12-05T12:42:00.000Z" title="发表于 2020-12-05 20:42:00">2020-12-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/%5BGXYCTF2019%5DPing%20Ping%20Ping/" title="【GXYCTF2019】Ping Ping Ping"><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201120223448.jpg" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/404.jpg'" alt="【GXYCTF2019】Ping Ping Ping"/></a><div class="content"><a class="title" href="/2020/%5BGXYCTF2019%5DPing%20Ping%20Ping/" title="【GXYCTF2019】Ping Ping Ping">【GXYCTF2019】Ping Ping Ping</a><time datetime="2020-12-04T12:24:50.776Z" title="发表于 2020-12-04 20:24:50">2020-12-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/DMCTF%E4%B9%8BMisc/" title="DMCTF之Misc"><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201120232221.png" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/404.jpg'" alt="DMCTF之Misc"/></a><div class="content"><a class="title" href="/2020/DMCTF%E4%B9%8BMisc/" title="DMCTF之Misc">DMCTF之Misc</a><time datetime="2020-12-01T03:20:45.000Z" title="发表于 2020-12-01 11:20:45">2020-12-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/PicGo%E5%A4%8D%E5%88%B6%E8%87%AA%E5%AE%9A%E4%B9%89%E9%93%BE%E6%8E%A5/" title="PicGo复制自定义链接"><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201116160027.jpg" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/404.jpg'" alt="PicGo复制自定义链接"/></a><div class="content"><a class="title" href="/2020/PicGo%E5%A4%8D%E5%88%B6%E8%87%AA%E5%AE%9A%E4%B9%89%E9%93%BE%E6%8E%A5/" title="PicGo复制自定义链接">PicGo复制自定义链接</a><time datetime="2020-11-30T01:54:11.000Z" title="发表于 2020-11-30 09:54:11">2020-11-30</time></div></div></div></div></div><div class="card-widget" id="card-newest-comments"><div class="card-content"><div class="item-headline"><i class="fas fa-bolt"></i><span>最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="card-widget card-categories"><div class="card-content"><div class="item-headline"><i class="fas fa-folder-open"></i><span>分类</span></div><ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/CTF/"><span class="card-category-list-name">CTF</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/DROPS/"><span class="card-category-list-name">DROPS</span><span class="card-category-list-count">9</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%8D%A3%E8%85%BE%E5%8D%9A%E5%AE%A2/"><span class="card-category-list-name">捣腾博客</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"><span class="card-category-list-name">服务器</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%B5%81%E6%B0%B4%E8%B4%A6/"><span class="card-category-list-name">流水账</span><span class="card-category-list-count">3</span></a></li>
+            
+            </ul></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/01/"><span class="card-archive-list-date">一月 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/12/"><span class="card-archive-list-date">十二月 2020</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/11/"><span class="card-archive-list-date">十一月 2020</span><span class="card-archive-list-count">13</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/09/"><span class="card-archive-list-date">九月 2020</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/08/"><span class="card-archive-list-date">八月 2020</span><span class="card-archive-list-count">1</span></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">24</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2020-08-20T16:00:00.000Z"></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">32k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2021-01-21T03:30:30.717Z"></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Braindance</div><div class="framework-info"><span>框架 </span><a href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">兴趣使然</div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/gh/guobang-yoo/CDN@master/js/utils.js"></script><script src="https://cdn.jsdelivr.net/gh/guobang-yoo/CDN@master/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/gh/guobang-yoo/CDN@master/js/search/local-search.js"></script><div class="js-pjax"><script>function subtitleType () {
+  if (true) { 
+    var typed = new Typed("#subtitle", {
+      strings: "兴趣使然,take your time and keep going :)".split(","),
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50
+    })
+  } else {
+    document.getElementById("subtitle").innerHTML = '兴趣使然'
+  }
+}
+
+if (true) {
+  if (typeof Typed === 'function') subtitleType()
+  else $.getScript('https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js', subtitleType)
+} else {
+  subtitleType()
+}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.17.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+    content = content.replace(/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|gif|png|webp)/g, '') // remove image link
+    content = content.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gi, '') // remove url
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon 
+    let defaultIcon = '?d=mp'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    for (let i = 0; i < array.length; i++) {
+      result += '<div class=\'aside-list-item\'>'
+
+      if (true) {
+        result += `<a href='${array[i].url}' class="thumbnail"><img src='${getIcon(array[i].avatar, array[i].mail)}' alt='${array[i].nick}'></a>`
+      }
+
+      result += `<div class='content'>
+      <a class='comment' href='${array[i].url}'>${array[i].content}</a>
+      <div class='name'><span>${array[i].nick}</span><time> / ${btf.diffDate(array[i].date, true)}</time></div>
+      </div></div>`
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getValineData = () => {
+      let serverURL = ''
+      if (false) {
+        serverURL = ''
+      } else {
+        serverURL = 'https://shaenDlk.api.lncldglobal.com'
+      }
+
+    var settings = {
+      "url": `${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,
+      "method": "GET",
+      "timeout": 0,
+      "headers": {
+        "X-LC-Id": 'shaenDlkzwy9NvdCNJVrJspu-MdYXbMMI',
+        "X-LC-Key": 'e074xMKoSw3B9kWmBediaBE9',
+        "Content-Type": "application/json"
+      },
+    }
+
+    $.ajax(settings).done((response) => {
+      var valineArray = []
+      response.results.forEach((e)=>{
+        valineArray.push({
+          'avatar': e.QQAvatar,
+          'content': changeContent(e.comment),
+          'mail': e.mail,
+          'nick': e.nick,
+          'url': e.url,
+          'date': e.createdAt,
+        })
+      })
+      
+      saveToLocal.set('leancloud-newest-comments', JSON.stringify(valineArray), 10/(60*24))
+      generateHtml(valineArray)
+
+    }).fail(()=>{
+      const $dom = document.querySelector('#card-newest-comments .aside-list')
+      $dom.innerHTML= "无法获取资料，请确认相关配置是否正确"
+    })
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('leancloud-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getValineData()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config_change',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  $('script[data-pjax]').each(function () {
+    $(this).parent().append($(this).remove())
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  $(window).off('scroll')
+
+  //reset readmode
+  $('body').hasClass('read-mode') && $('body').removeClass('read-mode')
+
+})</script></div></body></html>

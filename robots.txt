@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: 
+Disallow: /img
+Disallow: /archives
+Disallow: /categories
+Disallow: /tags
+Disallow: /guestbook
+Disallow: /link
+Disallow: /about
+Sitemap: https://braindance.tk/sitemap.xml

